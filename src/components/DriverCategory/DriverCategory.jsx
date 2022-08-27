@@ -42,7 +42,11 @@ function DriverCategory(props) {
   const onClick = (e) => {
     category?.map((res) => {
       if (res.id == e.key) {
-        window.location.href = `/products?id=${res.id}`;
+        navigate({
+          pathname:'products',
+          search:`?id=${res.id}`
+        })
+        // window.location.href = `/products?id=${res.id}`;
       }
     });
     props.onClose();

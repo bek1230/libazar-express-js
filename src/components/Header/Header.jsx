@@ -264,19 +264,15 @@ function Header({ t }) {
         >
           <ion-icon name="menu-outline"></ion-icon>
         </button>
-              {localStorage.getItem("tokenProfile") ? (
-                <button className="action-btn" onClick={showModals}>
-                  <ion-icon name="person-outline"></ion-icon>
-                </button>
-              ) : (
-                <button
-                  className="action-btn"
-                  onClick={() => navigate("/profile")}
-                >
-                  <ion-icon name="person-outline"></ion-icon>
-                </button>
-              )}
-
+        {localStorage.getItem("tokenProfile") ? (
+          <button className="action-btn" onClick={showModals}>
+            <ion-icon name="person-outline"></ion-icon>
+          </button>
+        ) : (
+          <button className="action-btn" onClick={() => navigate("/profile")}>
+            <ion-icon name="person-outline"></ion-icon>
+          </button>
+        )}
 
         <button className="action-btn" onClick={() => navigate("/")}>
           <ion-icon name="home-outline"></ion-icon>
@@ -286,16 +282,6 @@ function Header({ t }) {
           <ion-icon name="heart-outline"></ion-icon>
 
           <span className="count">{fowarid.value}</span>
-        </button>
-
-        <button
-          className="action-btn"
-          onClick={() => {
-            showDrawer();
-            dispatch(openCategoryReducer("active"));
-          }}
-        >
-          <ion-icon name="grid-outline"></ion-icon>
         </button>
       </div>
       <Drawer
