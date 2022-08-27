@@ -13,6 +13,7 @@ import About from "./pages/About/About";
 import Profile from "./pages/Profil/Profile";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
+import Login from "./pages/Profil/Login";
 
 function App() {
   return (
@@ -25,6 +26,8 @@ function App() {
               <Route path="/products" element={<Products />} />
               <Route path="/about" element={<About />} />
               <Route path="/profile" element={<Profile />} />
+              <Route path="/login" element={<Login />} />
+
             </Route>
           </Routes>
       </Suspense>

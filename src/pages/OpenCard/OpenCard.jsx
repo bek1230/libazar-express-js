@@ -23,7 +23,7 @@ function OpenCard({ t }) {
   const [resid, setresId] = useState();
   axios.defaults.headers.common[
     "Authorization"
-  ] = `Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJiZWsiLCJpYXQiOjE2NjE0NTQyNzIsImV4cCI6MTY2MTU0MDY3Mn0.MOMXvMxHpJb_h4ZubFBymR9U4yo3ihMKmMdzjcllksfuXhOZSyQa4ECC26PAIdoi3ppIaqHA6ohkLmq_-5yUCQ`;
+  ] = `Bearer ${localStorage.getItem("tokenProfile")}`;
   useEffect(() => {
     axios({
       method: "get",
@@ -160,14 +160,23 @@ function OpenCard({ t }) {
             </div>
             <div className="preparer">{t("Baham ko'ring")}:</div>
             <div className="social-link">
-              <div className="div-social">
+
+              <div className="div-social"  onClick={() => {
+                  if (localStorage.getItem("tokenProfile"))
+                    window.location.href = `http://www.facebook.com/sharer.php?u=https://libazar-express.herokuapp.com/openCard?id=${data?.id}`;
+                  else window.location.href = "/login";
+                }}>
                 <img
                   className="img-social"
                   src="../../assets/icons/facebook.png"
                   style={{ width: 30 }}
                 />
               </div>
-              <div className="div-social">
+              <div className="div-social" onClick={() => {
+                  if (localStorage.getItem("tokenProfile"))
+                    window.location.href = `https://www.instagram.com/?url=https://libazar-express.herokuapp.com/openCard?id=${data?.id}`;
+                  else window.location.href = "/login";
+                }}>
                 <img
                   className="img-social"
                   src="../../assets/icons/instagram.png"
@@ -175,9 +184,11 @@ function OpenCard({ t }) {
                 />{" "}
               </div>
               <div
-                onClick={() =>
-                  (window.location.href = `https://telegram.me/share/url?url=https://libazar-express.herokuapp.com/openCard?id=${data?.id}`)
-                }
+                onClick={() => {
+                  if (localStorage.getItem("tokenProfile"))
+                    window.location.href = `https://telegram.me/share/url?url=https://libazar-express.herokuapp.com/openCard?id=${data?.id}`;
+                  else window.location.href = "/login";
+                }}
                 className="div-social"
               >
                 <img

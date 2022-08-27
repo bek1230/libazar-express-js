@@ -1,40 +1,36 @@
 import React, { useState } from "react";
 import { withTranslation } from "react-i18next";
-import Servives from "../../components/Test/Servives";
 import url from "../../url.json";
 import axios from "axios";
 import { toast } from "react-toastify";
-import {useNavigate} from 'react-router-dom'
-function Profile({ t }) {
+import { useNavigate } from "react-router-dom";
+
+function Login({ t }) {
+  const navigate = useNavigate();
+
   const [error, setError] = useState();
-  const navigate=useNavigate()
   const handeSave = () => {
-    const phoneNumber = document.getElementById("phone").value;
     const username = document.getElementById("fullname").value;
     const password = document.getElementById("password").value;
-    const email = document.getElementById("email").value;
     const data = {
-      phoneNumber: phoneNumber,
       username: username,
       password: password,
-      email: email,
     };
     console.log(data);
-    if (phoneNumber=='' || username=='' || password=='' || email=='') {
+    if (username == "" || password == "") {
       setError("Maydonni to'ldirish kerak !");
-    }
-    else {
-
+    } else {
       axios({
         method: "post",
-        url: url.url + "auth/register",
+        url: url.url + "auth/login",
         data: data,
       })
         .then(function (response) {
           if (response.data.success) {
             toast.success(response.data.message);
-            setError()
-            navigate("/login")
+            setError();
+            localStorage.setItem("tokenProfile", response.data.data)
+            navigate("/");
           } else {
             setError(response.data.message);
           }
@@ -46,11 +42,11 @@ function Profile({ t }) {
   return (
     <div className="container">
       <div>
-        <div className="title">{t("Profile")}</div>
+        <div className="title">{t("Login")}</div>
         <div className="form-wrap" style={{ justifyContent: "center" }}>
           <form className="form-prof" onSubmit={handeSave}>
             <div className="form-group">
-              <h2 style={{ textAlign: "center" }}>{t("Sign up")}</h2>
+              <h2 style={{ textAlign: "center" }}>{t("Login")}</h2>
               <input
                 className="needclear"
                 placeholder={t("Fullname")}
@@ -63,18 +59,6 @@ function Profile({ t }) {
                 type="password"
                 id="password"
               />{" "}
-              <input
-                className="needclear"
-                placeholder={t("Email")}
-                type="email"
-                id="email"
-              />{" "}
-              <input
-                className="needclear"
-                placeholder="Telefon raqam"
-                type="phone"
-                id="phone"
-              />
               <i style={{ marginTop: 15, color: "red", fontSize: 14 }}>
                 {error}
               </i>
@@ -84,7 +68,7 @@ function Profile({ t }) {
                 onClick={handeSave}
                 type="button"
               >
-                {t("Sign up")}
+                {t("Login")}
               </button>
             </div>
           </form>
@@ -93,4 +77,4 @@ function Profile({ t }) {
     </div>
   );
 }
-export default withTranslation()(Profile);
+export default withTranslation()(Login);

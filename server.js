@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 const url = require("./src/url.json");
 const axios = require("axios");
-// sacfudsu
+
 app.get("/", (req, res) => {
   const filePath = path.resolve(__dirname, "./build", "index.html");
   fs.readFile(filePath, "utf8", (err, data) => {
@@ -56,5 +56,7 @@ app.get("/openCard", (req, res) => {
       });
   });
 });
+app.use("/assets", express.static("./assets/"));
+
 app.use(express.static(path.join(__dirname, "./build")));
 app.listen(PORT, () => console.log(`Server listening on ${PORT}`));

@@ -5,13 +5,60 @@ import url from "../../url.json";
 import { Spin, Empty } from "antd";
 import { HeartOutlined, HeartFilled } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
+import { fowaridReducer } from "../../Redux/Reducers/fowarid";
 function ProductMin(props) {
+  const dispatch = useDispatch();
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [product, setproduct] = useState();
   const filter = useSelector((state) => state.filter.value);
+  const [fow, setFow] = useState();
   const [load, setLoad] = useState(false);
+  function isfofarit(id, bol) {
+    setFow(Math.random());
+    axios.defaults.headers.common[
+      "Authorization"
+    ] = `Bearer ${localStorage.getItem("tokenProfile")}`;
+    if (!bol) {
+      axios({
+        method: "post",
+        url: url.url + `wishlist/${id}`,
+      })
+        .then(function (response) {
+          console.log(response.data.data);
+        })
+        .catch(function (response) {});
+    } else {
+      axios({
+        method: "delete",
+        url: url.url + `wishlist/${id}`,
+      })
+        .then(function (response) {
+          console.log(response.data.data);
+        })
+        .catch(function (response) {});
+    }
+
+    axios({
+      method: "get",
+      url: url.url + "product/get",
+    })
+      .then((data) => {
+        let count = 0;
+        setproduct(data.data.data);
+        for (let i = 0; i < data.data.data.length; i++) {
+          console.log(data.data.data[i].isFavourite);
+          if (data.data.data[i].isFavourite) {
+            count = count + 1;
+          }
+        }
+        dispatch(fowaridReducer(count));
+        setLoad(false);
+      })
+      .catch((error) => console.log(error));
+  }
   useEffect(() => {
     setLoad(true);
     if (props.id) {
@@ -23,15 +70,28 @@ function ProductMin(props) {
         })
         .catch((error) => console.log(error));
     } else {
-      fetch(url.url + "product/get")
-        .then((res) => res.json())
+      axios.defaults.headers.common[
+        "Authorization"
+      ] = `Bearer ${localStorage.getItem("tokenProfile")}`;
+      axios({
+        method: "get",
+        url: url.url + "product/get",
+      })
         .then((data) => {
-          setproduct(data.data);
+          let count = 0;
+          setproduct(data.data.data);
+          for (let i = 0; i < data.data.data.length; i++) {
+            console.log(data.data.data[i].isFavourite);
+            if (data.data.data[i].isFavourite) {
+              count = count + 1;
+            }
+          }
+          dispatch(fowaridReducer(count));
           setLoad(false);
         })
         .catch((error) => console.log(error));
     }
-  }, []);
+  }, [fow]);
   if (product?.length > 0)
     return (
       <div className="product-main">
@@ -86,8 +146,15 @@ function ProductMin(props) {
                         />
 
                         <div className="showcase-actions">
-                          <button className="btn-action">
-                            <ion-icon name="heart-outline"></ion-icon>
+                          <button
+                            className="btn-action"
+                            onClick={() => isfofarit(res.id, res.isFavourite)}
+                          >
+                            {res?.isFavourite ? (
+                              <HeartFilled />
+                            ) : (
+                              <HeartOutlined />
+                            )}
                           </button>
 
                           <button
@@ -160,8 +227,15 @@ function ProductMin(props) {
                         )}
 
                         <div className="showcase-actions">
-                          <button className="btn-action">
-                            <ion-icon name="heart-outline"></ion-icon>
+                          <button
+                            className="btn-action"
+                            onClick={() => isfofarit(res.id, res.isFavourite)}
+                          >
+                            {res?.isFavourite ? (
+                              <HeartFilled />
+                            ) : (
+                              <HeartOutlined />
+                            )}{" "}
                           </button>
 
                           <button

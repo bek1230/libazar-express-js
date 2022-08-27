@@ -47,9 +47,13 @@
 .div-social {
   cursor: pointer;
 }
-.preparer-descrip{
+.preparer-descrip {
+  padding: 0px 0px;
+  font-weight: 600;
   font-size: 20px;
-  padding: 10px 0px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  margin-top: 0px;
 }
 .div-social:hover {
   transform: scale(1.5);

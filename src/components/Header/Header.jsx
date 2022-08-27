@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Button, Drawer, Radio, Space } from "antd";
+import { Button, Drawer, Radio, Space, Modal } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import "./style.css";
 import MobileMenu from "../Mobile/MobileMenu";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { openReducer } from "../../Redux/Reducers/MenuOpen/MenuOpen";
 import SelectLan from "./SelectLan";
 import { openCategoryReducer } from "../../Redux/Reducers/openCategory";
@@ -13,10 +13,31 @@ import Profile from "../Profile/Profile";
 import url from "../../url.json";
 import { withTranslation } from "react-i18next";
 import { filterReducer } from "../../Redux/Reducers/filter";
+import { LogoutOutlined } from "@ant-design/icons";
+
 function Header({ t }) {
   const [open, setOpen] = useState(false);
   const [visible, setVisible] = useState(false);
   const [visiblem, setVisiblem] = useState(false);
+  const [visibless, setVisibless] = useState(false);
+  const [confirmLoading, setConfirmLoading] = useState(false);
+  const [modalText, setModalText] = useState("Content of the modal");
+  const fowarid = useSelector((state) => state.fowarid);
+  const showModals = () => {
+    setVisibless(true);
+  };
+  const handleCancel = () => {
+    console.log("Clicked cancel button");
+    setVisibless(false);
+  };
+  const handleOk = () => {
+    localStorage.removeItem("tokenProfile");
+    setConfirmLoading(true);
+    setTimeout(() => {
+      setVisibless(false);
+      setConfirmLoading(false);
+    }, 2000);
+  };
   const showDrawer = () => {
     setVisible(true);
   };
@@ -90,6 +111,13 @@ function Header({ t }) {
   }, [inputText]);
   return (
     <header>
+      <Modal
+        title={t("you are logout?")}
+        visible={visibless}
+        onOk={handleOk}
+        confirmLoading={confirmLoading}
+        onCancel={handleCancel}
+      ></Modal>
       <Profile
         showDrawers={showDrawers}
         onCloses={onCloses}
@@ -127,16 +155,25 @@ function Header({ t }) {
               </div>
             </div>
             <div className="header-user-actions">
+              {localStorage.getItem("tokenProfile") ? (
+                <button className="action-btn" onClick={showModals}>
+                  <ion-icon name="person-outline"></ion-icon>
+                </button>
+              ) : (
+                <button
+                  className="action-btn"
+                  onClick={() => navigate("/profile")}
+                >
+                  <ion-icon name="person-outline"></ion-icon>
+                </button>
+              )}
+
               <button
                 className="action-btn"
-                onClick={() => navigate("/profile")}
+                onClick={() => (window.location.href = "/products")}
               >
-                <ion-icon name="person-outline"></ion-icon>
-              </button>
-
-              <button className="action-btn">
                 <ion-icon name="heart-outline"></ion-icon>
-                <span className="count">0</span>
+                <span className="count">{fowarid.value}</span>
               </button>
             </div>
           </div>

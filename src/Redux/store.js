@@ -17,9 +17,11 @@ import modalapplicReducer from "./Reducers/Modal/modalapplic";
 import activelanding from "./Reducers/LandingActive/activelanding";
 import filterReducer from "./Reducers/filter";
 import openCategoryReducer from "./Reducers/openCategory";
+import fowaridReducer from "./Reducers/fowarid";
 export const store = configureStore({
   reducer: {
     class: classReducer,
+    fowarid: fowaridReducer,
     token: tokenReducer,
     activemenu: activemenuReducer,
     langReducer: langReducer,

@@ -30,6 +30,18 @@ function SelectLan() {
     if (selectlan.value == "uz") {
       setTitle("O'zbek");
       setIcons(LanUz);
+      i18n.changeLanguage("uz");
+    }
+    if (selectlan.value == "ru") {
+      setTitle("Русский");
+      setIcons(LanRu);
+      i18n.changeLanguage("ru");
+    }
+  }, []);
+  useEffect(() => {
+    if (selectlan.value == "uz") {
+      setTitle("O'zbek");
+      setIcons(LanUz);
     }
     if (selectlan.value == "ru") {
       setTitle("Русский");
