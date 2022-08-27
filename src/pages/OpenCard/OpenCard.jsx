@@ -176,7 +176,7 @@ function OpenCard({ t }) {
               </div>
               <div
                 onClick={() =>
-                  (window.location.href = `https://telegram.me/share/url?url=https://libazar-site.vercel.app/openCard?id=${data?.id}`)
+                  (window.location.href = `https://telegram.me/share/url?url=https://libazar-express.herokuapp.com/openCard?id=${data?.id}`)
                 }
                 className="div-social"
               >
