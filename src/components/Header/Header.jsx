@@ -85,9 +85,9 @@ function Header({ t }) {
       return el.name.toLowerCase().includes(inputText);
     }
   });
-  useEffect(()=>{
-    dispatch(filterReducer(filteredData))
-  },[inputText])
+  useEffect(() => {
+    dispatch(filterReducer(filteredData));
+  }, [inputText]);
   return (
     <header>
       <Profile
@@ -127,7 +127,10 @@ function Header({ t }) {
               </div>
             </div>
             <div className="header-user-actions">
-              <button className="action-btn" onClick={()=>navigate('/profile')}>
+              <button
+                className="action-btn"
+                onClick={() => navigate("/profile")}
+              >
                 <ion-icon name="person-outline"></ion-icon>
               </button>
 
@@ -165,15 +168,14 @@ function Header({ t }) {
                       <a>{res.name}</a>
                     </li>
                     {res.products?.map((item, i) => (
-                      <li className="panel-list-item" key={i}>
-                        <Link
-                          to={{
-                            pathname: "/openCard",
-                            search: `?id=${item.id}`,
-                          }}
-                        >
-                          {item.name}
-                        </Link>
+                      <li
+                        className="panel-list-item"
+                        key={i}
+                        onClick={() =>
+                          (window.location.href = `/openCard?id=${item.id}`)
+                        }
+                      >
+                        <a>{item.name}</a>
                       </li>
                     ))}
 
@@ -196,7 +198,9 @@ function Header({ t }) {
             </li>
 
             <li className="menu-category">
-              <Link to="/about" className="menu-title">{t("About")}</Link>
+              <Link to="/about" className="menu-title">
+                {t("About")}
+              </Link>
             </li>
           </ul>
         </div>

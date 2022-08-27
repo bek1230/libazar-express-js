@@ -92,12 +92,9 @@ function ProductMin(props) {
 
                           <button
                             className="btn-action"
-                            onClick={() => {
-                              navigate({
-                                pathname: "/openCard",
-                                search: `?id=${res.id}`,
-                              });
-                            }}
+                            onClick={() =>
+                              (window.location.href = `/openCard?id=${res.id}`)
+                            }
                           >
                             <ion-icon name="eye-outline"></ion-icon>
                           </button>
@@ -154,8 +151,13 @@ function ProductMin(props) {
                           width="300"
                           className="product-img hover"
                         />
-                        {res?.statusProduct=="OFF"?
-                        <p className="showcase-badge angle pink">{t("sale")}</p>:""}
+                        {res?.statusProduct == "OFF" ? (
+                          <p className="showcase-badge angle pink">
+                            {t("sale")}
+                          </p>
+                        ) : (
+                          ""
+                        )}
 
                         <div className="showcase-actions">
                           <button className="btn-action">
@@ -164,12 +166,9 @@ function ProductMin(props) {
 
                           <button
                             className="btn-action"
-                            onClick={() => {
-                              navigate({
-                                pathname: "/openCard",
-                                search: `?id=${res.id}`,
-                              });
-                            }}
+                            onClick={() =>
+                              (window.location.href = `/openCard?id=${res.id}`)
+                            }
                           >
                             <ion-icon name="eye-outline"></ion-icon>
                           </button>
@@ -195,7 +194,13 @@ function ProductMin(props) {
                           <p className="price">
                             {res?.price} {res?.currency}
                           </p>
-                          {res?.statusProduct=="OFF"?<del>{res?.offPrice} {res?.currency}</del>:""}
+                          {res?.statusProduct == "OFF" ? (
+                            <del>
+                              {res?.offPrice} {res?.currency}
+                            </del>
+                          ) : (
+                            ""
+                          )}
                         </div>
                       </div>
                     </div>
