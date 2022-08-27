@@ -3,6 +3,7 @@ import {
   TranslationOutlined,
   InfoCircleOutlined,
   DashboardOutlined,
+  LoginOutlined
 } from "@ant-design/icons";
 import { Menu } from "antd";
 import { withTranslation } from "react-i18next";
@@ -21,6 +22,7 @@ function MobileMenu(props) {
   const items = [
     getItem(t("Home"), "Home", <DashboardOutlined />),
     getItem(t("About"), "About", <InfoCircleOutlined />),
+    getItem(t("Login"), "Login", <LoginOutlined />),
 
     getItem(
       t("Uz"),
@@ -39,6 +41,9 @@ function MobileMenu(props) {
     }
     if (e.key == "About") {
       navigate("/about");
+    }
+    if (e.key == "Login") {
+      navigate("/login");
     }
     if (e.key == "Ru") {
       dispatch(langReducer("ru"));

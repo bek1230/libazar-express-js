@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { withTranslation } from "react-i18next";
 import Servives from "../../components/Test/Servives";
 import { Helmet } from "react-helmet";
 
 function About({ t }) {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="container">
       <Helmet>
@@ -39,7 +42,6 @@ function About({ t }) {
         <meta property="og:image:width" content="436" />
         <meta property="og:image:height" content="228" />
       </Helmet>
-
 
       <div className="row mb-5 container">
         <div className="title">{t("About")}</div>

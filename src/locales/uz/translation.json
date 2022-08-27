@@ -37,11 +37,19 @@
   "order the product":"mahsulotga buyurtma bering",
   "username":"Foydalanuvchi nomi",
   "Create a new account":"Yangi hisob yarating",
-  "Menu": "Manyu",
+  "Menu": "Menyu",
   "Categories": "Turlari",
   "Enter your product name...":"Mahsulot nomini kiriting...",
   "best sellers":"Eng yaxshi sotilganlar",
-  "Our Services":"Bizning xizmatlar"
+  "Our Services":"Bizning xizmatlar",
+  "Sign up":"Ro'yxatdan o'tish",
+  "Login":"Kirish",
+  "you are logout?":"Hisobdan chiqmoqchimisiz?",
+  "Email":"Email",
+  "Profile":"Profil",
+  "Barchasi":"Barchasi",
+  "new":"Yangi",
+  "New Products":"Yangi mahsulotlar"
 
 
 }

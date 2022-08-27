@@ -170,7 +170,7 @@ function Header({ t }) {
 
               <button
                 className="action-btn"
-                onClick={() => (window.location.href = "/products")}
+                onClick={() => navigate("/fowarids")}
               >
                 <ion-icon name="heart-outline"></ion-icon>
                 <span className="count">{fowarid.value}</span>
@@ -239,6 +239,16 @@ function Header({ t }) {
                 {t("About")}
               </Link>
             </li>
+            <li className="menu-category">
+              <Link to="/login" className="menu-title">
+                {t("Login")}
+              </Link>
+            </li>
+            <li className="menu-category">
+              <Link to="/profile" className="menu-title">
+                {t("Sign up")}
+              </Link>
+            </li>
           </ul>
         </div>
       </nav>
@@ -254,15 +264,28 @@ function Header({ t }) {
         >
           <ion-icon name="menu-outline"></ion-icon>
         </button>
+              {localStorage.getItem("tokenProfile") ? (
+                <button className="action-btn" onClick={showModals}>
+                  <ion-icon name="person-outline"></ion-icon>
+                </button>
+              ) : (
+                <button
+                  className="action-btn"
+                  onClick={() => navigate("/profile")}
+                >
+                  <ion-icon name="person-outline"></ion-icon>
+                </button>
+              )}
+
 
         <button className="action-btn" onClick={() => navigate("/")}>
           <ion-icon name="home-outline"></ion-icon>
         </button>
 
-        <button className="action-btn">
+        <button className="action-btn" onClick={() => navigate("/fowarids")}>
           <ion-icon name="heart-outline"></ion-icon>
 
-          <span className="count">0</span>
+          <span className="count">{fowarid.value}</span>
         </button>
 
         <button

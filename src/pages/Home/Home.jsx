@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import Blog from "../../components/Blog/Blog";
 import Carusel from "../../components/Carusel/Carusel";
 import Category from "../../components/Category/Category";
@@ -9,6 +9,9 @@ import Servives from "../../components/Test/Servives";
 import Trande from "../../components/Trande/Trande";
 
 export default function Home() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div >
       {/* <Hero /> */}

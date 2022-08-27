@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { withTranslation } from "react-i18next";
 import url from "../../url.json";
 import axios from "axios";
@@ -7,7 +7,9 @@ import { useNavigate } from "react-router-dom";
 
 function Login({ t }) {
   const navigate = useNavigate();
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const [error, setError] = useState();
   const handeSave = () => {
     const username = document.getElementById("fullname").value;
@@ -29,7 +31,7 @@ function Login({ t }) {
           if (response.data.success) {
             toast.success(response.data.message);
             setError();
-            localStorage.setItem("tokenProfile", response.data.data)
+            localStorage.setItem("tokenProfile", response.data.data);
             navigate("/");
           } else {
             setError(response.data.message);

@@ -14,6 +14,7 @@ import Profile from "./pages/Profil/Profile";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import Login from "./pages/Profil/Login";
+import Fowarits from "./pages/Products/Fowarits";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/fowarids" element={<Fowarits />} />
 
             </Route>
           </Routes>

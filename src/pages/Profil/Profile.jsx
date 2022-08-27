@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import { withTranslation } from "react-i18next";
 import Servives from "../../components/Test/Servives";
 import url from "../../url.json";
@@ -7,6 +7,9 @@ import { toast } from "react-toastify";
 import {useNavigate} from 'react-router-dom'
 function Profile({ t }) {
   const [error, setError] = useState();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const navigate=useNavigate()
   const handeSave = () => {
     const phoneNumber = document.getElementById("phone").value;

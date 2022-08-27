@@ -6,7 +6,7 @@ import Products from "../../components/Carusel/Products";
 import "./styles.css";
 import "./styless.scss";
 import { withTranslation } from "react-i18next";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import url from "../../url.json";
 import { Link } from "react-router-dom";
 import BlogSlider from "../../components/BlogSlider/BlogSlider";
@@ -21,10 +21,14 @@ function OpenCard({ t }) {
   let id = searchParams.get("id");
   const [data, setData] = useState();
   const [resid, setresId] = useState();
+  const navigate = useNavigate();
+  const [error, setError] = useState();
   axios.defaults.headers.common[
     "Authorization"
   ] = `Bearer ${localStorage.getItem("tokenProfile")}`;
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     axios({
       method: "get",
       url: url.url + "auth/me",
@@ -66,33 +70,31 @@ function OpenCard({ t }) {
       phoneNumber: phone,
       sellerName: fullname,
     };
-    axios({
-      method: "post",
-      url: url.url + "share/add",
-      data: data,
-    })
-      .then(function (response) {
-        if (response.data.success) {
-          toast.success("So'rovingiz qabul qilindi! Aloqaga chiqamiz!");
-        } else {
-          toast.error(response.data.data);
-        }
-        console.log(response.data.data);
+    if(fullname !='' && phone !='' ){
+      axios({
+        method: "post",
+        url: url.url + "share/add",
+        data: data,
       })
-      .catch(function (response) {});
-  };
+        .then(function (response) {
+          if (response.data.success) {
+            setError()
+            toast.success("So'rovingiz qabul qilindi! Aloqaga chiqamiz!");
+          } else {
+            toast.error(response.data.data);
+          }
+          console.log(response.data.data);
+        })
+        .catch(function (response) {});
+    }
+    else{
+      setError("Ma'lumotlar to'ldirilishi shart !")
+    }
+    }
+
 
   return (
     <div className="container ">
-      {data ? (
-        <SEO
-          title={data?.name}
-          thumbnail={data?.imageUrls[0]}
-          url="https://libazar-site-web.vercel.app/"
-        />
-      ) : (
-        ""
-      )}
       <Modal
         title={t("order the product")}
         visible={visible}
@@ -149,6 +151,9 @@ function OpenCard({ t }) {
                 type="text"
               />
             </div>
+            <i style={{ marginTop: 15, color: "red", fontSize: 14 }}>
+                {error}
+              </i>
             <button
               className="mt-5 width-sm-100 buy_now_detail d-flex justify-content-center btn btn-danger"
               onClick={handleSave}
@@ -160,23 +165,32 @@ function OpenCard({ t }) {
             </div>
             <div className="preparer">{t("Baham ko'ring")}:</div>
             <div className="social-link">
-
-              <div className="div-social"  onClick={() => {
+              <div
+                className="div-social"
+                onClick={() => {
                   if (localStorage.getItem("tokenProfile"))
                     window.location.href = `http://www.facebook.com/sharer.php?u=https://libazar-express.herokuapp.com/openCard?id=${data?.id}`;
-                  else window.location.href = "/login";
-                }}>
+                  else {
+                    navigate("/login");
+                  }
+                }}
+              >
                 <img
                   className="img-social"
                   src="../../assets/icons/facebook.png"
                   style={{ width: 30 }}
                 />
               </div>
-              <div className="div-social" onClick={() => {
+              <div
+                className="div-social"
+                onClick={() => {
                   if (localStorage.getItem("tokenProfile"))
                     window.location.href = `https://www.instagram.com/?url=https://libazar-express.herokuapp.com/openCard?id=${data?.id}`;
-                  else window.location.href = "/login";
-                }}>
+                  else {
+                    navigate("/login");
+                  }
+                }}
+              >
                 <img
                   className="img-social"
                   src="../../assets/icons/instagram.png"
@@ -187,7 +201,9 @@ function OpenCard({ t }) {
                 onClick={() => {
                   if (localStorage.getItem("tokenProfile"))
                     window.location.href = `https://telegram.me/share/url?url=https://libazar-express.herokuapp.com/openCard?id=${data?.id}`;
-                  else window.location.href = "/login";
+                  else {
+                    navigate("/login");
+                  }
                 }}
                 className="div-social"
               >

@@ -21,13 +21,29 @@ function ProductMin(props) {
     axios.defaults.headers.common[
       "Authorization"
     ] = `Bearer ${localStorage.getItem("tokenProfile")}`;
-    if (!bol) {
+    console.log(bol);
+    if (bol == null) {
       axios({
         method: "post",
         url: url.url + `wishlist/${id}`,
       })
         .then(function (response) {
-          console.log(response.data.data);
+          axios({
+            method: "get",
+            url: url.url + "product/get",
+          })
+            .then((data) => {
+              let count = 0;
+              setproduct(data.data.data);
+              for (let i = 0; i < data.data.data.length; i++) {
+                if (data.data.data[i].isFavourite) {
+                  count = count + 1;
+                }
+              }
+              dispatch(fowaridReducer(count));
+              setLoad(false);
+            })
+            .catch((error) => console.log(error));
         })
         .catch(function (response) {});
     } else {
@@ -36,28 +52,25 @@ function ProductMin(props) {
         url: url.url + `wishlist/${id}`,
       })
         .then(function (response) {
-          console.log(response.data.data);
+          axios({
+            method: "get",
+            url: url.url + "product/get",
+          })
+            .then((data) => {
+              let count = 0;
+              setproduct(data.data.data);
+              for (let i = 0; i < data.data.data.length; i++) {
+                if (data.data.data[i].isFavourite) {
+                  count = count + 1;
+                }
+              }
+              dispatch(fowaridReducer(count));
+              setLoad(false);
+            })
+            .catch((error) => console.log(error));
         })
         .catch(function (response) {});
     }
-
-    axios({
-      method: "get",
-      url: url.url + "product/get",
-    })
-      .then((data) => {
-        let count = 0;
-        setproduct(data.data.data);
-        for (let i = 0; i < data.data.data.length; i++) {
-          console.log(data.data.data[i].isFavourite);
-          if (data.data.data[i].isFavourite) {
-            count = count + 1;
-          }
-        }
-        dispatch(fowaridReducer(count));
-        setLoad(false);
-      })
-      .catch((error) => console.log(error));
   }
   useEffect(() => {
     setLoad(true);
@@ -81,7 +94,6 @@ function ProductMin(props) {
           let count = 0;
           setproduct(data.data.data);
           for (let i = 0; i < data.data.data.length; i++) {
-            console.log(data.data.data[i].isFavourite);
             if (data.data.data[i].isFavourite) {
               count = count + 1;
             }

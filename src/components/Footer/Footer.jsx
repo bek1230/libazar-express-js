@@ -11,7 +11,6 @@ function Footer({ t }) {
       .then((res) => res.json())
       .then((data) => {
         const dat=data.data.slice(0,4)
-        console.log(dat);
         setproduct(dat);
       })
       .catch((error) => console.log(error));
