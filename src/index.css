@@ -1,0 +1,117 @@
+.ant-menu-submenu-title {
+  padding-left: 0px !important;
+}
+.productsList--item {
+  position: relative;
+  border: 1px solid hsl(0, 0%, 93%);
+  border-radius: 10px;
+}
+.productsList--item--link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.productsList--item--image {
+  border-radius: 6px;
+  overflow: hidden;
+}
+.productsList--item--image .img {
+  border-radius: 6px;
+}
+.productsList--item--info {
+  padding: 0.35rem;
+}
+.productsList--item--title {
+  color: hsl(0, 0%, 47%);
+  font-size: 0.875rem;
+  font-weight: 600;
+  height: 30px;
+  text-transform: capitalize;
+  overflow: hidden;
+  /* white-space: nowrap; */
+  text-overflow: ellipsis;
+  letter-spacing: 0.5px;
+}
+.productsList--item--price {
+  font-size: 16px;
+  font-weight: 700;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.font-weight-bold {
+  font-weight: 700 !important;
+  color: hsl(353, 100%, 78%);
+}
+.small,
+small {
+  font-size: 80%;
+  font-weight: 400;
+  color: hsl(353, 100%, 78%);
+}
+.ant-spin-dot-item {
+  background-color: hsl(353, 100%, 78%) !important;
+}
+.ant-spin-text {
+  color: hsl(353, 100%, 78%);
+  font-size: 20px;
+}
+a:hover {
+  color: hsl(353, 100%, 78%) !important;
+}
+a::after {
+  cursor: none;
+}
+.slick-dots li.slick-active button:before {
+  /* opacity: .75; */
+  /* color: black; */
+  color: black !important;
+  width: 100%;
+}
+.slick-dots li button:before {
+  color: black !important;
+  width: 100%;
+}
+.slick-dots .slick-dots-bottom {
+  margin: 0 !important;
+}
+.ant-carousel .slick-dots {
+  margin: 0 !important;
+}
+.ant-menu-item {
+  border-bottom: 1px solid #f0f0f0;
+}
+.row {
+  margin-left: 0 !important;
+}
+/* .showcase {
+  height: 300px !important;
+} */
+.showcase-banner {
+  height: 250px !important;
+}
+.showcase-title {
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+.form-wrap{
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  width: 100%!important;
+  padding: 30px;
+}
+.form-prof {
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid #f0f0f0; */
+  border-radius: 5px;
+  width: 40% !important;
+}

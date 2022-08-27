@@ -1,0 +1,208 @@
+import React, { useState, useEffect } from "react";
+import { Button, Modal } from "antd";
+import { Carousel } from "antd";
+import axios from "axios";
+import Products from "../../components/Carusel/Products";
+import "./styles.css";
+import "./styless.scss";
+import { withTranslation } from "react-i18next";
+import { useSearchParams } from "react-router-dom";
+import url from "../../url.json";
+import { Link } from "react-router-dom";
+import BlogSlider from "../../components/BlogSlider/BlogSlider";
+import { toast } from "react-toastify";
+import SEO from "../../components/Seo";
+
+function OpenCard({ t }) {
+  let [searchParams, setSearchParams] = useSearchParams();
+  const [visible, setVisible] = useState(false);
+  const [confirmLoading, setConfirmLoading] = useState(false);
+  const [modalText, setModalText] = useState("Content of the modal");
+  let id = searchParams.get("id");
+  const [data, setData] = useState();
+  const [resid, setresId] = useState();
+  axios.defaults.headers.common[
+    "Authorization"
+  ] = `Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJiZWsiLCJpYXQiOjE2NjE0NTQyNzIsImV4cCI6MTY2MTU0MDY3Mn0.MOMXvMxHpJb_h4ZubFBymR9U4yo3ihMKmMdzjcllksfuXhOZSyQa4ECC26PAIdoi3ppIaqHA6ohkLmq_-5yUCQ`;
+  useEffect(() => {
+    axios({
+      method: "get",
+      url: url.url + "auth/me",
+    })
+      .then(function (response) {
+        setresId(response.data.data);
+      })
+      .catch(function (response) {});
+    fetch(url.url + `product/get/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data.data);
+      })
+      .catch((error) => console.log(error));
+  }, []);
+  const showModal = () => {
+    setVisible(true);
+  };
+
+  const handleOk = () => {
+    setModalText("The modal will be closed after two seconds");
+    setConfirmLoading(true);
+    setTimeout(() => {
+      setVisible(false);
+      setConfirmLoading(false);
+    }, 2000);
+  };
+
+  const handleCancel = () => {
+    console.log("Clicked cancel button");
+    setVisible(false);
+  };
+  const handleSave = () => {
+    const fullname = document.getElementById("fullname").value;
+    const phone = document.getElementById("phone").value;
+    const data = {
+      userId: resid,
+      productId: id,
+      phoneNumber: phone,
+      sellerName: fullname,
+    };
+    axios({
+      method: "post",
+      url: url.url + "share/add",
+      data: data,
+    })
+      .then(function (response) {
+        if (response.data.success) {
+          toast.success("So'rovingiz qabul qilindi! Aloqaga chiqamiz!");
+        } else {
+          toast.error(response.data.data);
+        }
+        console.log(response.data.data);
+      })
+      .catch(function (response) {});
+  };
+
+  return (
+    <div className="container ">
+      {data ? (
+        <SEO
+          title={data?.name}
+          thumbnail={data?.imageUrls[0]}
+          url="https://libazar-site-web.vercel.app/"
+        />
+      ) : (
+        ""
+      )}
+      <Modal
+        title={t("order the product")}
+        visible={visible}
+        onOk={handleOk}
+        confirmLoading={confirmLoading}
+        onCancel={handleCancel}
+      >
+        <p>{modalText}</p>
+      </Modal>
+      <div className="open-wrapper">
+        <div className="open-wrap-slid">
+          <Carousel autoplay>
+            {data?.imageUrls.map((res, i) => (
+              <div className="carousel-div" key={i}>
+                <img
+                  src={res}
+                  alt="Pure Garment Dyed Cotton Shirt"
+                  className="product-img default"
+                  style={{
+                    width: "100%",
+                    height: 450,
+                    borderRadius: 10,
+                    objectFit: "cover",
+                  }}
+                  width="100%"
+                />
+              </div>
+            ))}
+          </Carousel>
+        </div>
+        <div className="open-wrap-form">
+          <div className="open-disc">
+            <div className="prod-title">
+              <h1 className="prod-name">{data?.name}</h1>
+              <h2 className="prod-price">
+                {data?.price} {data?.currency}
+              </h2>
+            </div>
+            <div className="form-group">
+              <input
+                className="needclear"
+                id="fullname"
+                name="client_full_name"
+                placeholder="Ismingiz"
+                type="text"
+              />
+            </div>
+            <div className="form-group">
+              <input
+                id="phone"
+                className="needclear"
+                name="client_full_name"
+                placeholder="Telefon raqam"
+                type="text"
+              />
+            </div>
+            <button
+              className="mt-5 width-sm-100 buy_now_detail d-flex justify-content-center btn btn-danger"
+              onClick={handleSave}
+            >
+              {t("Buyrutma berish")}
+            </button>
+            <div className="preparer">
+              Sotuvchi:<span className="name-prep">Rasulov Behzod</span>
+            </div>
+            <div className="preparer">{t("Baham ko'ring")}:</div>
+            <div className="social-link">
+              <div className="div-social">
+                <img
+                  className="img-social"
+                  src="../../assets/icons/facebook.png"
+                  style={{ width: 30 }}
+                />
+              </div>
+              <div className="div-social">
+                <img
+                  className="img-social"
+                  src="../../assets/icons/instagram.png"
+                  style={{ width: 30 }}
+                />{" "}
+              </div>
+              <div
+                onClick={() =>
+                  (window.location.href = `https://telegram.me/share/url?url=https://libazar-site.vercel.app/openCard?id=${data?.id}`)
+                }
+                className="div-social"
+              >
+                <img
+                  className="img-social"
+                  src="../../assets/icons/telegram.png"
+                  style={{ width: 30 }}
+                />{" "}
+              </div>
+              <div className="div-social">
+                <img
+                  className="img-social"
+                  src="../../assets/icons/twitter.png"
+                  style={{ width: 30 }}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="preparer" style={{ fontSize: 26 }}>
+        {" "}
+        {t("Description")} :
+      </div>
+      <div className="preparer-descrip">{data?.description}</div>
+    </div>
+  );
+}
+export default withTranslation()(OpenCard);

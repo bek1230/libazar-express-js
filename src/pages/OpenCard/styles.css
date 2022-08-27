@@ -1,0 +1,72 @@
+.prod-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.prod-name {
+  font-size: 30px;
+  margin-bottom: 1rem;
+  margin-top: 0px;
+  text-transform: capitalize;
+}
+.prod-price {
+  font-size: 25px;
+  line-height: 1;
+  margin-bottom: 4px;
+  margin-top: 0px;
+  color: rgb(233, 69, 96);
+}
+.btn-card {
+  width: 327px;
+  margin-bottom: 20px;
+}
+.preparer {
+  display: flex;
+  align-items: center;
+  margin-top: 25px;
+  font-size: 14px;
+  color: rgb(125, 135, 156);
+}
+.name-prep {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  margin-left: 8px;
+}
+.social-link {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.img-social {
+  margin-right: 15px;
+}
+.div-social {
+  cursor: pointer;
+}
+.preparer-descrip{
+  font-size: 20px;
+  padding: 10px 0px;
+}
+.div-social:hover {
+  transform: scale(1.5);
+  /* transition: all 0.4s ease; */
+  /* margin-right: 15px; */
+}
+.ant-modal-close-x {
+  /* display: block; */
+  width: 54px;
+  display: flex;
+  height: 54px;
+  font-size: 16px;
+  font-style: normal;
+  line-height: 54px;
+  text-align: right;
+  text-transform: none;
+  text-rendering: auto;
+  align-items: center;
+  justify-content: center;
+}

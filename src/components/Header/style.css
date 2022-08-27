@@ -1,0 +1,32 @@
+.sticky {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 999999;
+  background-color: #fff;
+  box-shadow: 0 0 15px rgb(0 0 0 / 10%);
+}
+.header-inp {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.logos {
+  width: 20%;
+}
+.search-inp {
+  width: 70%;
+}
+.lan-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 15px;
+  font-size: 12px;
+  width: "100%";
+
+}
+.header-top{
+  text-align: center;
+}

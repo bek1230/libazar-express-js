@@ -1,0 +1,23 @@
+@import "../../sass/variables.scss";
+@import "../../sass/mixins.scss";
+.open-wrapper {
+  margin-bottom: 25px;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+// @include breakpoint-down(1240px) {
+//   .open-wrapper__table,
+//   .open-wrapper__id {
+//     max-width: auto;
+//   }
+// }
+
+@include breakpoint-down(1180px) {
+  .open-wrapper {
+    flex-direction: column;
+  }
+}

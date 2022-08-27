@@ -1,0 +1,88 @@
+@import "../../sass/variables.scss";
+@import "../../sass/mixins.scss";
+.open-wrapper {
+  margin-bottom: 25px;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.open-disc {
+  flex-direction: column;
+  width: 80%;
+}
+.open-wrap-slid {
+  width: 40%;
+}
+.open-wrap-form {
+  width: 45%;
+}
+.landing-blog__wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+  width: 100%;
+}
+.carousel-div {
+  margin-bottom: 0.5rem;
+  border: 1px solid hsl(0, 0%, 93%);
+  border-radius: 10px;
+  width: 100%;
+  padding: 5px;
+}
+.form-group {
+  margin-bottom: 1rem;
+}
+.needclear {
+  border-radius: 100px;
+  height: 45px;
+  padding: 5px 15px;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 2px solid hsl(353, 100%, 78%) !important;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  &:active {
+    border: 2px solid hsl(353, 100%, 78%) !important;
+  }
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: calc(2.25rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+// @include breakpoint-down(1240px) {
+//   .open-wrapper__table,
+//   .open-wrapper__id {
+//     max-width: auto;
+//   }
+// }
+
+@include breakpoint-down(1180px) {
+  .open-wrap-slid {
+    width: 100%;
+  }
+  .open-wrap-form {
+    width: 100%;
+  }
+  .open-wrapper {
+    flex-direction: column;
+  }
+  .open-disc {
+    flex-direction: column;
+    width: 100%;
+  }
+}
