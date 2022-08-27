@@ -6,7 +6,7 @@ const app = express();
 const url = require("./src/url.json");
 const axios = require("axios");
 // sacfudsu
-app.get("*", (req, res) => {
+app.get("/", (req, res) => {
   const filePath = path.resolve(__dirname, "./build", "index.html");
   fs.readFile(filePath, "utf8", (err, data) => {
     if (err) {
