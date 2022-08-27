@@ -207,6 +207,13 @@ function ProductMin(props) {
                           <p className="price">
                             {res?.price} {res?.currency}
                           </p>
+                          {res?.offPrice ? (
+                            <del>
+                              {res?.offPrice} {res?.currency}
+                            </del>
+                          ) : (
+                            ""
+                          )}
                         </div>
                       </div>
                     </div>
@@ -280,7 +287,7 @@ function ProductMin(props) {
                           <p className="price">
                             {res?.price} {res?.currency}
                           </p>
-                          {res?.statusProduct == "OFF" ? (
+                          {res?.offPrice ? (
                             <del>
                               {res?.offPrice} {res?.currency}
                             </del>
