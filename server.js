@@ -31,7 +31,7 @@ app.get("/", (req, res) => {
   });
 });
 app.get("/openCard", (req, res) => {
-  const postId = req.query.id;
+  const postId = req.query.id.slice(0, 36);
   console.log("postId=", postId);
   const filePath = path.resolve(__dirname, "./build", "index.html");
   fs.readFile(filePath, "utf8", (err, data) => {
