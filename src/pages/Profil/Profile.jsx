@@ -15,15 +15,12 @@ function Profile({ t }) {
     const phoneNumber = document.getElementById("phone").value;
     const username = document.getElementById("fullname").value;
     const password = document.getElementById("password").value;
-    const email = document.getElementById("email").value;
     const data = {
       phoneNumber: phoneNumber,
       username: username,
       password: password,
-      email: email,
     };
-    console.log(data);
-    if (phoneNumber=='' || username=='' || password=='' || email=='') {
+    if (phoneNumber=='' || username=='' || password=='' ) {
       setError("Maydonni to'ldirish kerak !");
     }
     else {
@@ -66,12 +63,7 @@ function Profile({ t }) {
                 type="password"
                 id="password"
               />{" "}
-              <input
-                className="needclear"
-                placeholder={t("Email")}
-                type="email"
-                id="email"
-              />{" "}
+             
               <input
                 className="needclear"
                 placeholder="Telefon raqam"

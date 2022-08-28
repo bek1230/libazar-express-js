@@ -19,6 +19,7 @@ function OpenCard({ t }) {
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [modalText, setModalText] = useState("Content of the modal");
   let id = searchParams.get("id");
+  let userId = searchParams.get("userid");
   const [data, setData] = useState();
   const [resid, setresId] = useState();
   const navigate = useNavigate();
@@ -28,13 +29,13 @@ function OpenCard({ t }) {
   ] = `Bearer ${localStorage.getItem("tokenProfile")}`;
   useEffect(() => {
     window.scrollTo(0, 0);
-
     axios({
       method: "get",
       url: url.url + "auth/me",
     })
       .then(function (response) {
-        setresId(response.data.data);
+        if (response.data.success) setresId(response.data.data);
+        else setresId();
       })
       .catch(function (response) {});
     fetch(url.url + `product/get/${id}`)
@@ -65,12 +66,12 @@ function OpenCard({ t }) {
     const fullname = document.getElementById("fullname").value;
     const phone = document.getElementById("phone").value;
     const data = {
-      userId: resid,
+      userId: userId ? userId : resid,
       productId: id,
       phoneNumber: phone,
       sellerName: fullname,
     };
-    if(fullname !='' && phone !='' ){
+    if (fullname != "" && phone != "") {
       axios({
         method: "post",
         url: url.url + "share/add",
@@ -78,7 +79,7 @@ function OpenCard({ t }) {
       })
         .then(function (response) {
           if (response.data.success) {
-            setError()
+            setError();
             toast.success("So'rovingiz qabul qilindi! Aloqaga chiqamiz!");
           } else {
             toast.error(response.data.data);
@@ -86,12 +87,10 @@ function OpenCard({ t }) {
           console.log(response.data.data);
         })
         .catch(function (response) {});
+    } else {
+      setError("Ma'lumotlar to'ldirilishi shart !");
     }
-    else{
-      setError("Ma'lumotlar to'ldirilishi shart !")
-    }
-    }
-
+  };
 
   return (
     <div className="container ">
@@ -151,9 +150,7 @@ function OpenCard({ t }) {
                 type="text"
               />
             </div>
-            <i style={{ marginTop: 15, color: "red", fontSize: 14 }}>
-                {error}
-              </i>
+            <i style={{ marginTop: 15, color: "red", fontSize: 14 }}>{error}</i>
             <button
               className="mt-5 width-sm-100 buy_now_detail d-flex justify-content-center btn btn-danger"
               onClick={handleSave}
@@ -169,7 +166,7 @@ function OpenCard({ t }) {
                 className="div-social"
                 onClick={() => {
                   if (localStorage.getItem("tokenProfile"))
-                    window.location.href = `http://www.facebook.com/sharer.php?u=https://libazar-express.herokuapp.com/openCard?id=${data?.id}`;
+                    window.location.href = `http://www.facebook.com/sharer.php?u=https://libazar-express.herokuapp.com/openCard?id=${data?.id}&userid=${resid}`;
                   else {
                     navigate("/login");
                   }
@@ -185,7 +182,7 @@ function OpenCard({ t }) {
                 className="div-social"
                 onClick={() => {
                   if (localStorage.getItem("tokenProfile"))
-                    window.location.href = `https://www.instagram.com/?url=https://libazar-express.herokuapp.com/openCard?id=${data?.id}`;
+                    window.location.href = `https://www.instagram.com/?url=https://libazar-express.herokuapp.com/openCard?id=${data?.id}&userid=${resid}`;
                   else {
                     navigate("/login");
                   }
@@ -200,7 +197,8 @@ function OpenCard({ t }) {
               <div
                 onClick={() => {
                   if (localStorage.getItem("tokenProfile"))
-                    window.location.href = `https://telegram.me/share/url?url=https://libazar-express.herokuapp.com/openCard?id=${data?.id}`;
+                    window.location.href = `https://telegram.me/share/url?url=https://libazar-express.herokuapp.com/openCard?id=${data?.id}&userid=${resid}
+                    }`;
                   else {
                     navigate("/login");
                   }
