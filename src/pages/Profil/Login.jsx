@@ -18,7 +18,6 @@ function Login({ t }) {
       username: username,
       password: password,
     };
-    console.log(data);
     if (username == "" || password == "") {
       setError("Maydonni to'ldirish kerak !");
     } else {

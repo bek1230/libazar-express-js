@@ -31,11 +31,13 @@ function Header({ t }) {
     setVisibless(false);
   };
   const handleOk = () => {
+    localStorage.clear();
     localStorage.removeItem("tokenProfile");
     setConfirmLoading(true);
     setTimeout(() => {
       setVisibless(false);
       setConfirmLoading(false);
+      window.location.reload();
     }, 2000);
   };
   const showDrawer = () => {

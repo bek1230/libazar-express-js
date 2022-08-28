@@ -118,7 +118,7 @@ function OpenCard({ t }) {
                     width: "100%",
                     height: 450,
                     borderRadius: 10,
-                    objectFit: "cover",
+                    objectFit: "contain",
                   }}
                   width="100%"
                 />
@@ -168,7 +168,9 @@ function OpenCard({ t }) {
                 className="div-social"
                 onClick={() => {
                   if (localStorage.getItem("tokenProfile"))
-                    window.location.href = `http://www.facebook.com/sharer.php?u=https://libazar-express.herokuapp.com/openCard?id=${data?.id}&userid=${resid}`;
+                    window.location.href = `http://www.facebook.com/sharer.php?u=https://libazar-express.herokuapp.com/openCard?id=${
+                      data?.id + resid
+                    }`;
                   else {
                     navigate("/login");
                   }
@@ -184,7 +186,9 @@ function OpenCard({ t }) {
                 className="div-social"
                 onClick={() => {
                   if (localStorage.getItem("tokenProfile"))
-                    window.location.href = `https://www.instagram.com/?url=https://libazar-express.herokuapp.com/openCard?id=${data?.id}&userid=${resid}`;
+                    window.location.href = `https://www.instagram.com/?https://libazar-express.herokuapp.com/openCard?id=${
+                      data?.id + resid
+                    }`;
                   else {
                     navigate("/login");
                   }
