@@ -19,7 +19,7 @@ function OpenCard({ t }) {
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [modalText, setModalText] = useState("Content of the modal");
   // let id = searchParams.get("id");
-  let id = searchParams.get("id").slice(-36);
+  let id = searchParams.get("id").slice(0, 36);
 
   const [data, setData] = useState();
   const [resid, setresId] = useState();
@@ -64,7 +64,7 @@ function OpenCard({ t }) {
     setVisible(false);
   };
   const handleSave = () => {
-    let userId = searchParams.get("id").slice(0, 36);
+    let userId = searchParams.get("id").slice(-36);
     const fullname = document.getElementById("fullname").value;
     const phone = document.getElementById("phone").value;
     const data = {
