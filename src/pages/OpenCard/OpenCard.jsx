@@ -83,6 +83,7 @@ function OpenCard({ t }) {
           if (response.data.success) {
             setError();
             toast.success("So'rovingiz qabul qilindi! Aloqaga chiqamiz!");
+            navigate("/");
           } else {
             toast.error(response.data.data);
           }
