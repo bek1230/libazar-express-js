@@ -12,7 +12,8 @@ import { Link } from "react-router-dom";
 import BlogSlider from "../../components/BlogSlider/BlogSlider";
 import { toast } from "react-toastify";
 import SEO from "../../components/Seo";
-
+import Youtube from "../../components/Youtube/Youtube";
+import { CloseOutlined } from "@ant-design/icons";
 function OpenCard({ t }) {
   let [searchParams, setSearchParams] = useSearchParams();
   const [visible, setVisible] = useState(false);
@@ -67,11 +68,13 @@ function OpenCard({ t }) {
     let userId = searchParams.get("id").slice(-36);
     const fullname = document.getElementById("fullname").value;
     const phone = document.getElementById("phone").value;
+    const region=document.getElementById("region").value;
     const data = {
       userId: userId ? userId : resid,
       productId: id,
       phoneNumber: phone,
       sellerName: fullname,
+      region:region
     };
     if (fullname != "" && phone != "") {
       axios({
@@ -82,8 +85,9 @@ function OpenCard({ t }) {
         .then(function (response) {
           if (response.data.success) {
             setError();
+            window.scrollTo(0, 0);
+
             toast.success("So'rovingiz qabul qilindi! Aloqaga chiqamiz!");
-            navigate("/");
           } else {
             toast.error(response.data.data);
           }
@@ -94,6 +98,7 @@ function OpenCard({ t }) {
       setError("Ma'lumotlar to'ldirilishi shart !");
     }
   };
+  const [open, setopen] = useState(false);
 
   return (
     <div className="container ">
@@ -106,9 +111,50 @@ function OpenCard({ t }) {
       >
         <p>{modalText}</p>
       </Modal>
+      {open ? (
+        <div className="fancybox-containe">
+          <Youtube url={data?.urlVideo} />
+
+          <div
+            className="fancybox-toolbar"
+            style={{ fontSize: 30, cursor: "pointer" }}
+            onClick={() => setopen(false)}
+          >
+            {" "}
+            <CloseOutlined style={{ color: "rgb(233, 69, 96)" }} />
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
+
       <div className="open-wrapper">
         <div className="open-wrap-slid">
-          <Carousel autoplay>
+          <div className="img_block">
+            <img
+              src={data?.imageUrls[0]}
+              alt="Pure Garment Dyed Cotton Shirt"
+              className="product-img default"
+              style={{
+                width: "100%",
+                height: 450,
+                borderRadius: 10,
+                objectFit: "contain",
+              }}
+              width="100%"
+            />
+            {data?.urlVideo ? (
+              <div
+                className="play"
+                onClick={() => setopen(true)}
+                style={{ cursor: "pointer" }}
+              ></div>
+            ) : (
+              ""
+            )}
+          </div>
+
+          {/* <Carousel autoplay>
             {data?.imageUrls.map((res, i) => (
               <div className="carousel-div" key={i}>
                 <img
@@ -119,13 +165,13 @@ function OpenCard({ t }) {
                     width: "100%",
                     height: 450,
                     borderRadius: 10,
-                    objectFit: "contain",
+                    objectFit: "cover",
                   }}
                   width="100%"
                 />
               </div>
             ))}
-          </Carousel>
+          </Carousel> */}
         </div>
         <div className="open-wrap-form">
           <div className="open-disc">
@@ -152,6 +198,36 @@ function OpenCard({ t }) {
                 placeholder="Telefon raqam"
                 type="text"
               />
+            </div>
+            <div className="form-group">
+              <select
+                style={{ width: "100%" }}
+                id="region"
+                className="needclear"
+                type="select"
+              >
+                <option name="Toshkent shahar">Toshkent shahar</option>
+
+                <option name="Qoraqalpog‘iston Respublikasi">
+                  Qoraqalpog‘iston Respublikasi
+                </option>
+                <option name="Andijon viloyati">Andijon viloyati</option>
+                <option name="Buxoro viloyati">Buxoro viloyati</option>
+                <option name="Jizzax viloyati">Jizzax viloyati</option>
+                <option name="Qashqadaryo viloyati">
+                  Qashqadaryo viloyati
+                </option>
+                <option name="Navoiy viloyati">Navoiy viloyati</option>
+                <option name="Namangan viloyati">Namangan viloyati</option>
+                <option name="Samarqand viloyati">Samarqand viloyati</option>
+                <option name="Surxondaryo viloyati">
+                  Surxondaryo viloyati
+                </option>
+                <option name="Sirdaryo viloyati">Sirdaryo viloyati</option>
+                <option name="Toshkent viloyati">Toshkent viloyati</option>
+                <option name="Farg'ona viloyati">Farg'ona viloyati</option>
+                <option name="Xorazim viloyati">Xorazim viloyati</option>
+              </select>
             </div>
             <i style={{ marginTop: 15, color: "red", fontSize: 14 }}>{error}</i>
             <button

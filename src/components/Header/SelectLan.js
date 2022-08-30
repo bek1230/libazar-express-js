@@ -10,9 +10,9 @@ import { langReducer } from "../../Redux/Reducers/Lang/langReducer";
 function SelectLan() {
   const selectlan = useSelector((state) => state.langReducer);
   const { t, i18n } = useTranslation();
-  const [Title, setTitle] = useState();
+  const [Title, setTitle] = useState("O'zbek");
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [icons, setIcons] = useState();
+  const [icons, setIcons] = useState(LanUz);
   const dispatch = useDispatch();
   useEffect(() => {
     if (selectlan.value == "uz") {
@@ -114,7 +114,7 @@ function SelectLan() {
     >
       <div className="lan-title">
         <img src={icons} style={{ borderRadius: 8, width: 30, height: 30 }} />
-      <div className="p-lg-1">  {Title}</div>
+        <div className="p-lg-1"> {Title}</div>
       </div>
     </Dropdown>
   );

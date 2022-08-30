@@ -64,6 +64,93 @@
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+.img_block {
+  width: 100%;
+  position: relative;
+  height: 100%;
+  display: block;
+}
+.img_block .play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 60px;
+  height: 60px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: #e72a4d url(https://dasturxon.tv/images/play.svg) no-repeat center
+    right 17px;
+  background-size: 20px auto;
+  transition: all 0.3s linear;
+  transform: translate(-50%, -50%);
+}
+.main_video_block {
+  display: flex;
+  justify-content: space-between;
+  background: #ffffff;
+  box-shadow: 0px 20px 50px rgb(0 163 103 / 10%);
+  margin-bottom: 80px;
+}
+.fancybox-containe {
+  // -webkit-backface-visibility: hidden;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.774);
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1111;
+}
+.fancybox-toolbar {
+  right: 30;
+  top: 30;
+  z-index: 115552511;
+  position: absolute;
+
+
+}
+.fancybox-is-open .fancybox-bg {
+  opacity: 0.9;
+  transition-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.fancybox-bg {
+  background: #1e1e1e;
+  opacity: 0;
+  transition-duration: inherit;
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.47, 0, 0.74, 0.71);
+}
+.fancybox-bg,
+.fancybox-inner,
+.fancybox-outer,
+.fancybox-stage {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.fancybox-is-open .fancybox-stage {
+  overflow: hidden;
+}
+.fancybox-stage {
+  direction: ltr;
+  overflow: visible;
+  transform: translateZ(0);
+  z-index: 99994;
+}
+@media (max-height: 576px) {
+  .fancybox-slide {
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+}
 // @include breakpoint-down(1240px) {
 //   .open-wrapper__table,
 //   .open-wrapper__id {
