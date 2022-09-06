@@ -32,7 +32,6 @@ app.get("/", (req, res) => {
 });
 app.get("/openCard", (req, res) => {
   const postId = req.query.id.slice(0, 36);
-  console.log("postId=", postId);
   const filePath = path.resolve(__dirname, "./build", "index.html");
   fs.readFile(filePath, "utf8", (err, data) => {
     if (err) {
@@ -57,6 +56,8 @@ app.get("/openCard", (req, res) => {
   });
 });
 app.use("/assets", express.static("./assets/"));
-
+app.get('*', function(request, response, next) {
+  response.sendfile(__dirname, "./build", "index.html");
+});
 app.use(express.static(path.join(__dirname, "./build")));
 app.listen(PORT, () => console.log(`Server listening on ${PORT}`));
