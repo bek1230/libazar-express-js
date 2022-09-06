@@ -19,7 +19,7 @@ export default function Home() {
       <Category />
       {/* <Category2 /> */}
       <Product />
-      <Servives />
+      {/* <Servives /> */}
       {/* <Blog/> */}
     </div>
   );

@@ -60,7 +60,7 @@ function About({ t }) {
           quaerat, minus libero quo quasi veniam odit?
         </div>
       </div>
-      <Servives />
+      {/* <Servives /> */}
     </div>
   );
 }

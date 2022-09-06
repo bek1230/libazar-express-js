@@ -118,3 +118,34 @@ a::after {
 .needclear {
   margin-top: 10px;
 }
+body {
+  background-color: rgb(243, 245, 249) !important;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,Liberation Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji  !important;
+}
+footer {
+  background-color: rgb(15, 52, 96) !important;
+  color: white !important;
+}
+.header-top {
+  background-color: rgb(15, 52, 96) !important;
+  color: white !important;
+}
+.p-lg-1 {
+  color: white !important;
+}
+.footer-nav-link{
+  color: rgb(174, 180, 190) !important;
+}
+.showcase{
+  background-color: white !important;
+}
+.title-category{
+  font-size: 14px !important;
+  font-weight: 400;
+}
+.preparer-descrip{
+  font-weight: 400 !important;
+  font-size: 16px !important;
+  letter-spacing: 0.5px;
+  white-space: pre !important;
+}

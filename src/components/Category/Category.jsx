@@ -25,7 +25,7 @@ function Category({ t }) {
                         pathname: "/products",
                         search: `?id=${res.id}`,
                       }}>
-                <div>
+                <div className="title-category">
                   {res.name}
                 </div>
 
