@@ -56,7 +56,9 @@ app.get("/openCard", (req, res) => {
   });
 });
 app.use("/assets", express.static("./assets/"));
-app.get('*', function(request, response, next) {
+app.get("*", function (request, response, next) {
+  app.use(express.static(path.join(__dirname, "./build")));
+
   response.redirect("/");
 });
 app.use(express.static(path.join(__dirname, "./build")));
