@@ -56,10 +56,11 @@ app.get("/openCard", (req, res) => {
   });
 });
 app.use("/assets", express.static("./assets/"));
-app.get("*", function (request, response, next) {
-  app.use(express.static(path.join(__dirname, "./build")));
-
-  response.redirect("/");
+app.configure(function() {
+  app.use('/', express.static(__dirname + '/'));
+});
+app.get('*', function(request, response, next) {
+  response.sendfile(__dirname + './build/index.html');
 });
 app.use(express.static(path.join(__dirname, "./build")));
 app.listen(PORT, () => console.log(`Server listening on ${PORT}`));
