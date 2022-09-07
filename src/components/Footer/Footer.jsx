@@ -29,12 +29,12 @@ function Footer({ t }) {
             </li>
             {category?.map((res, i) => (
               <li className="footer-nav-item" key={i} onClick={()=>window.location.href=`/products?id=${res.id}`}>
-                <a
-
+                <div
+style={{cursor: 'pointer'}}
                   className="footer-nav-link"
                 >
                   {res?.name}
-                </a>
+                </div>
               </li>
             ))}
           </ul>
@@ -45,9 +45,9 @@ function Footer({ t }) {
             </li>
 {product?.map((res) =>(
             <li className="footer-nav-item" key={res.id} onClick={()=>window.location.href=`/openCard?id=${res.id}`}>
-              <a  className="footer-nav-link">
+              <div style={{cursor: 'pointer'}}  className="footer-nav-link">
                 {res?.name}
-              </a>
+              </div>
             </li>
             ))}
 
@@ -55,7 +55,7 @@ function Footer({ t }) {
 
           <ul className="footer-nav-list">
             <li className="footer-nav-item">
-              <h2 className="nav-title">Contact</h2>
+              <h2 className="nav-title">Biz bilan aloqa</h2>
             </li>
 
             <li className="footer-nav-item flex">
@@ -63,9 +63,9 @@ function Footer({ t }) {
                 <ion-icon name="location-outline"></ion-icon>
               </div>
 
-              <address className="content">
-                419 State 414 Rte Beaver Dams, New York(NY), 14812, USA
-              </address>
+              <div className="footer-nav-link">
+                Afrosiyob ko'chasi 12-uy
+              </div>
             </li>
 
             <li className="footer-nav-item flex">
@@ -73,8 +73,8 @@ function Footer({ t }) {
                 <ion-icon name="call-outline"></ion-icon>
               </div>
 
-              <a href="tel:+607936-8058" className="footer-nav-link">
-                (607) 936-8058
+              <a href="tel:+98935953833" className="footer-nav-link">
+                (93) 5953833
               </a>
             </li>
 
@@ -84,7 +84,7 @@ function Footer({ t }) {
               </div>
 
               <a href="mailto:example@gmail.com" className="footer-nav-link">
-                example@gmail.com
+               libazar@inbox.ru
               </a>
             </li>
           </ul>

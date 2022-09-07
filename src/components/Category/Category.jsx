@@ -32,7 +32,7 @@ function Category({ t }) {
                 <div
                   className="cat-icon"
                   style={{
-                    backgroundColor: "hsl(353, 100%, 87%)",
+                    backgroundColor: "rgb(15, 52, 96)",
                   }}
                 >
                   <img

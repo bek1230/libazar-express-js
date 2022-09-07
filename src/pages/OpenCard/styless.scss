@@ -43,10 +43,10 @@
   color: #495057;
   background-color: #fff;
   background-clip: padding-box;
-  border: 2px solid hsl(353, 100%, 78%) !important;
+  border: 2px solid #000 !important;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   &:active {
-    border: 2px solid hsl(353, 100%, 78%) !important;
+    border: 2px solid #000 !important;
   }
 }
 
@@ -80,7 +80,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  background: #e72a4d url(https://dasturxon.tv/images/play.svg) no-repeat center
+  background: #000 url(https://dasturxon.tv/images/play.svg) no-repeat center
     right 17px;
   background-size: 20px auto;
   transition: all 0.3s linear;

@@ -131,15 +131,16 @@ function Header({ t }) {
             <div className="header-inp">
               <Link
                 to="/"
-                className="header-logo logos"
+                className="header-logo logos menu-title"
                 style={{ marginRight: 5 }}
               >
-                <img
+                {/* <img
                   src="../../assets/images/logo/logo.png"
                   alt="Anon's logo"
                   width="80"
                   height="40"
-                />
+                /> */}
+                <h3 className="menu-title" style={{color:"#000",fontWeight:600}}>LIBAZAR</h3>
               </Link>
 
               <div className="header-search-container search-inp">

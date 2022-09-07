@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Modal } from "antd";
+import { Button, Modal, Spin } from "antd";
 import { Carousel } from "antd";
 import axios from "axios";
 import Products from "../../components/Carusel/Products";
@@ -131,18 +131,24 @@ function OpenCard({ t }) {
       <div className="open-wrapper">
         <div className="open-wrap-slid">
           <div className="img_block">
-            <img
-              src={data?.imageUrls[0]}
-              alt="Pure Garment Dyed Cotton Shirt"
-              className="product-img default"
-              style={{
-                width: "100%",
-                height: 450,
-                borderRadius: 10,
-                objectFit: "contain",
-              }}
-              width="100%"
-            />
+          {data?.imageUrls[0]?   <Carousel autoplay>
+            {data?.imageUrls.map((res, i) => (
+              <div className="carousel-div" key={i}>
+                <img
+                  src={res}
+                  alt="Pure Garment Dyed Cotton Shirt"
+                  className="product-img default"
+                  style={{
+                    width: "100%",
+                    height: 450,
+                    borderRadius: 10,
+                    objectFit: "contain",
+                  }}
+                  width="100%"
+                />
+              </div>
+            ))}
+          </Carousel>: <div style={{display:'flex',alignItems:'center',justifyContent: 'center',marginTop:20}}><Spin/> </div>}
             {data?.urlVideo ? (
               <div
                 className="play"
@@ -154,24 +160,7 @@ function OpenCard({ t }) {
             )}
           </div>
 
-          {/* <Carousel autoplay>
-            {data?.imageUrls.map((res, i) => (
-              <div className="carousel-div" key={i}>
-                <img
-                  src={res}
-                  alt="Pure Garment Dyed Cotton Shirt"
-                  className="product-img default"
-                  style={{
-                    width: "100%",
-                    height: 450,
-                    borderRadius: 10,
-                    objectFit: "cover",
-                  }}
-                  width="100%"
-                />
-              </div>
-            ))}
-          </Carousel> */}
+
         </div>
         <div className="open-wrap-form">
           <div className="open-disc">
@@ -237,7 +226,7 @@ function OpenCard({ t }) {
               {t("Buyrutma berish")}
             </button>
             <div className="preparer">
-              Sotuvchi:<span className="name-prep">Rasulov Behzod</span>
+              Sotuvchi:<span className="name-prep">Libazar admin</span>
             </div>
             <div className="preparer">{t("Baham ko'ring")}:</div>
             <div className="social-link">

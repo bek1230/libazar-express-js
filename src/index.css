@@ -120,7 +120,15 @@ a::after {
 }
 body {
   background-color: rgb(243, 245, 249) !important;
-  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,Liberation Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji  !important;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Helvetica Neue, Arial, Noto Sans, Liberation Sans, sans-serif,
+    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji !important;
+}
+a:hover {
+  color: rgb(15, 52, 96) !important;
+}
+.count {
+  background-color: rgb(15, 52, 96) !important;
 }
 footer {
   background-color: rgb(15, 52, 96) !important;
@@ -133,17 +141,17 @@ footer {
 .p-lg-1 {
   color: white !important;
 }
-.footer-nav-link{
+.footer-nav-link {
   color: rgb(174, 180, 190) !important;
 }
-.showcase{
+.showcase {
   background-color: white !important;
 }
-.title-category{
+.title-category {
   font-size: 14px !important;
   font-weight: 400;
 }
-.preparer-descrip{
+.preparer-descrip {
   font-weight: 400 !important;
   font-size: 16px !important;
   letter-spacing: 0.5px;

@@ -12,7 +12,7 @@ export default function Intro() {
     <div className="header-top">
       <i className="fa-brands fa-square-facebook"></i>{" "}
       <div className="container">
-        <ul className="header-social-container">
+        {/* <ul className="header-social-container">
           <li>
             <a href="#" className="social-link">
               <FaFacebookSquare className="icons-fa" />
@@ -36,7 +36,7 @@ export default function Intro() {
               <FaYoutube className="icons-fa" />
             </a>
           </li>
-        </ul>
+        </ul> */}
 
         <div className="header-top-actions">
           <SelectLan />
