@@ -234,7 +234,7 @@ function OpenCard({ t }) {
                 className="div-social"
                 onClick={() => {
                   if (localStorage.getItem("tokenProfile"))
-                    window.location.href = `http://www.facebook.com/sharer.php?u=https://libazar.uz/openCard?id=${
+                    window.location.href = `http://www.facebook.com/sharer.php?u=http://libazar.uz/openCard?id=${
                       data?.id + resid
                     }`;
                   else {
@@ -252,7 +252,7 @@ function OpenCard({ t }) {
                 className="div-social"
                 onClick={() => {
                   if (localStorage.getItem("tokenProfile"))
-                    window.location.href = `https://www.instagram.com/?https://libazar.uz/openCard?id=${
+                    window.location.href = `https://www.instagram.com/?http://libazar.uz/openCard?id=${
                       data?.id + resid
                     }`;
                   else {
@@ -269,7 +269,7 @@ function OpenCard({ t }) {
               <div
                 onClick={() => {
                   if (localStorage.getItem("tokenProfile"))
-                    window.location.href = `https://telegram.me/share/url?url=https://libazar.uz/openCard?id=${
+                    window.location.href = `https://telegram.me/share/url?url=http://libazar.uz/openCard?id=${
                       data?.id + resid
                     }`;
                   else {
