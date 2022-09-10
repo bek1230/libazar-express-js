@@ -162,8 +162,11 @@ function Fowarits(props) {
 
                         <button
                           className="btn-action"
-                          onClick={() =>
-                            (window.location.href = `/openCard?id=${res.id}`)
+                          onClick={() =>  navigate({
+                            pathname: "openCard",
+                            search: `?id=${res.id}`,
+                          })
+                            // (window.location.href = `/openCard?id=${res.id}`)
                           }
                         >
                           <ion-icon name="eye-outline"></ion-icon>

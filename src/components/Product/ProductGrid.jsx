@@ -13,6 +13,7 @@ function ProductGrid() {
   const [product, setproduct] = useState();
   const [load, setLoad] = useState(false);
   const [fow, setFow] = useState();
+
   function isfofarit(id, bol) {
     setFow(Math.random());
     axios.defaults.headers.common[
@@ -102,8 +103,11 @@ function ProductGrid() {
 
                   <button
                     className="btn-action"
-                    onClick={() =>
-                      (window.location.href = `/openCard?id=${res.id}`)
+                    onClick={() =>  navigate({
+                            pathname: "openCard",
+                            search: `?id=${res.id}`,
+                          })
+                      // (window.location.href = `/openCard?id=${res.id}`)
                     }
                   >
                     <ion-icon name="eye-outline"></ion-icon>

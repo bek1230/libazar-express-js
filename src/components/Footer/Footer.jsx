@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { withTranslation } from "react-i18next";
-import {Link} from 'react-router-dom'
+import {Link,useNavigate} from 'react-router-dom'
 import url from "../../url.json";
 function Footer({ t }) {
   const [category, setCategory] = useState();
   const [product, setproduct] = useState();
-
+const navigate=useNavigate()
   useEffect(() => {
     fetch(url.url + "product/get")
       .then((res) => res.json())
@@ -28,7 +28,12 @@ function Footer({ t }) {
               <h2 className="nav-title">{t("Popular Categories")}</h2>
             </li>
             {category?.map((res, i) => (
-              <li className="footer-nav-item" key={i} onClick={()=>window.location.href=`/products?id=${res.id}`}>
+              <li className="footer-nav-item" key={i} onClick={()=> navigate({
+                            pathname: "products",
+                            search: `?id=${res.id}`,
+                          })
+              // window.location.href=`/products?id=${res.id}`
+              }>
                 <div
 style={{cursor: 'pointer'}}
                   className="footer-nav-link"
@@ -44,7 +49,13 @@ style={{cursor: 'pointer'}}
               <h2 className="nav-title">{t("Products")}</h2>
             </li>
 {product?.map((res) =>(
-            <li className="footer-nav-item" key={res.id} onClick={()=>window.location.href=`/openCard?id=${res.id}`}>
+            <li className="footer-nav-item" key={res.id} onClick={()=>
+             navigate({
+                            pathname: "openCard",
+                            search: `?id=${res.id}`,
+                          })}
+            // window.location.href=`/openCard?id=${res.id}`}
+            >
               <div style={{cursor: 'pointer'}}  className="footer-nav-link">
                 {res?.name}
               </div>
