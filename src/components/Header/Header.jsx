@@ -201,11 +201,8 @@ function Header({ t }) {
                   <ul className="dropdown-panel-list" key={i}>
                     <li
                       className="menu-title"
-                      onClick={() =>  navigate({
-                            pathname: "products",
-                            search: `?id=${res.id}`,
-                          })
-                        // (window.location.href = `/products?id=${res.id}`)
+                      onClick={() =>
+                        (window.location.href = `/products?id=${res.id}`)
                       }
                     >
                       <a>{res.name}</a>
@@ -214,11 +211,8 @@ function Header({ t }) {
                       <li
                         className="panel-list-item"
                         key={i}
-                        onClick={() =>  navigate({
-                            pathname: "openCard",
-                            search: `?id=${item.id}`,
-                          })
-                          // (window.location.href = `/openCard?id=${item.id}`)
+                        onClick={() =>
+                          (window.location.href = `/openCard?id=${item.id}`)
                         }
                       >
                         <a>{item.name}</a>

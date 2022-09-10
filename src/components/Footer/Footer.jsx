@@ -28,11 +28,8 @@ const navigate=useNavigate()
               <h2 className="nav-title">{t("Popular Categories")}</h2>
             </li>
             {category?.map((res, i) => (
-              <li className="footer-nav-item" key={i} onClick={()=> navigate({
-                            pathname: "products",
-                            search: `?id=${res.id}`,
-                          })
-              // window.location.href=`/products?id=${res.id}`
+              <li className="footer-nav-item" key={i} onClick={()=>
+              window.location.href=`/products?id=${res.id}`
               }>
                 <div
 style={{cursor: 'pointer'}}
@@ -50,11 +47,8 @@ style={{cursor: 'pointer'}}
             </li>
 {product?.map((res) =>(
             <li className="footer-nav-item" key={res.id} onClick={()=>
-             navigate({
-                            pathname: "openCard",
-                            search: `?id=${res.id}`,
-                          })}
-            // window.location.href=`/openCard?id=${res.id}`}
+           
+            window.location.href=`/openCard?id=${res.id}`}
             >
               <div style={{cursor: 'pointer'}}  className="footer-nav-link">
                 {res?.name}
