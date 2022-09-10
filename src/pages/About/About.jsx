@@ -46,18 +46,25 @@ function About({ t }) {
       <div className="row mb-5 container">
         <div className="title">{t("About")}</div>
         <div className="mb-5">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores
-          asperiores qui optio non quae praesentium consequatur voluptates
-          repudiandae minima, quod repellendus, eius voluptas cupiditate omnis,
-          quasi ipsa assumenda dolor reprehenderit eaque rem sed tempora amet
-          perspiciatis. Autem ea unde cupiditate necessitatibus, totam, saepe
-          placeat laboriosam, molestias harum blanditiis recusandae nihil ut
-          quae deleniti. Harum molestiae doloribus iste, obcaecati amet delectus
-          alias repudiandae doloremque voluptatibus sapiente illo recusandae
-          nemo. Odio quod labore aspernatur totam itaque laboriosam maxime
-          repellat voluptatibus error veritatis. Iusto tenetur officia incidunt
-          deleniti reiciendis sunt ea illo fugiat. Dolorum incidunt cupiditate
-          quaerat, minus libero quo quasi veniam odit?
+          Hozirda onlayn-do'konlarga ega bo'lgan ko'plab jismoniy do'konlar
+          uchun odatiy holga aylanib bormoqda, ular Internetda eksklyuziv
+          takliflarga ega bo'lib, siz uni jismoniy muassasada ko'rishingiz
+          mumkin emas, bu sizga katta afzallik deb aytish uchun ko'rsatma
+          beradi. Internetda sotib olish. Bu faqat onlayn xaridlar iste'molchiga
+          olib keladigan ko'plab afzalliklardan biridir. Shuni unutmaslik
+          kerakki, Internet a ulkan bitimlar dunyosi, ularning aksariyati
+          bozorda haqiqiy yangilikdir va tarmoq tufayli ularning barchasiga
+          kirish mumkin. Ushbu yondashuvga binoan, shubhasiz, bundan buyon ushbu
+          aniq ko'tarilgan marketing tizimining afzalliklarini sezadigan ko'plab
+          foydalanuvchilar yoki mijozlar mavjud. Qaerda uni boshqarish va texnik
+          xizmat ko'rsatishda ko'plab xarajatlarni tejashingiz mumkin va bu biz
+          ishonganimizdan ko'ra ko'proq pul tejashga yo'l qo'ymasligi aniq.
+          Bundan tashqari, biz asta-sekin tushuntirib beradigan boshqa hissalar.
+          Mahsulotlarni olib kirish, shubhasiz, mamlakatda mavjud bo'lmagan va
+          narxlarda mavjud bo'lgan eng kuchli ustunlik ekanligini unutmaymiz.
+          Ushbu strategiya keltiradigan mantiqiy foyda bilan foydalanuvchilar
+          yoki mijozlarning o'zlarida. Shu paytgacha ular mahsulot, xizmat yoki
+          maqolalarni hozirgi kunga qaraganda ancha arzonroq olishlari mumkin.
         </div>
       </div>
       {/* <Servives /> */}

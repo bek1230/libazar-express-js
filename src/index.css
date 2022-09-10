@@ -157,3 +157,14 @@ footer {
   letter-spacing: 0.5px;
   white-space: pre !important;
 }
+.btn {
+  background-color: rgb(15, 52, 96) !important;
+  border: 1px solid rgb(15, 52, 96) !important;
+}
+.btn:active:focus {
+  box-shadow: none!important;
+}
+
+.btn:focus {
+  box-shadow: none!important;
+}

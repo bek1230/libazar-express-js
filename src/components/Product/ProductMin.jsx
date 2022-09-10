@@ -117,7 +117,7 @@ function ProductMin(props) {
           }}
         >
           <div>{t("Products")}</div>
-          <Link to="/products">{t("Barchasi")}</Link>
+          <Link className="ant-menu-title-content" to="/products">{t("Barchasi")}</Link>
         </div>
         <div>
           {load ? (
