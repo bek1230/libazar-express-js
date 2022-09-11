@@ -138,7 +138,9 @@ function ProductMin(props) {
             <div className="product-grid">
               {filter
                 ? filter?.map((res, i) => (
-                    <div className="showcase" key={i}>
+                    <div className="showcase" key={i}   onClick={() =>
+                      (window.location.href = `/openCard?id=${res.id}`)
+                    }>
                       <div className="showcase-banner">
                         <img
                           src={res.imageUrls ? res.imageUrls[0] : ""}
@@ -219,7 +221,9 @@ function ProductMin(props) {
                     </div>
                   ))
                 : product?.map((res, i) => (
-                    <div className="showcase" key={i}>
+                    <div className="showcase" key={i}   onClick={() =>
+                      (window.location.href = `/openCard?id=${res.id}`)
+                    }>
                       <div className="showcase-banner">
                         <img
                           src={res.imageUrls ? res.imageUrls[0] : ""}

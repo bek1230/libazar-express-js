@@ -76,7 +76,9 @@ function ProductGrid() {
       <div className="product-grid">
         {product?.map((res, i) =>
           res?.statusProduct == "NEW" ? (
-            <div className="showcase" key={i}>
+            <div className="showcase" key={i}   onClick={() =>
+                      (window.location.href = `/openCard?id=${res.id}`)
+                    }>
               <div className="showcase-banner">
                 <img
                   src={res.imageUrls ? res.imageUrls[0] : ""}
