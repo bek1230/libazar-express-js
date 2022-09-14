@@ -47,7 +47,7 @@ style={{cursor: 'pointer'}}
             </li>
 {product?.map((res) =>(
             <li className="footer-nav-item" key={res.id} onClick={()=>
-           
+
             window.location.href=`/openCard?id=${res.id}`}
             >
               <div style={{cursor: 'pointer'}}  className="footer-nav-link">
@@ -60,7 +60,7 @@ style={{cursor: 'pointer'}}
 
           <ul className="footer-nav-list">
             <li className="footer-nav-item">
-              <h2 className="nav-title">Biz bilan aloqa</h2>
+              <h2 className="nav-title">{t("Biz bilan aloqa")}</h2>
             </li>
 
             <li className="footer-nav-item flex">

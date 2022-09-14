@@ -242,6 +242,12 @@ function Header({ t }) {
                 {t("About")}
               </Link>
             </li>
+            {localStorage.getItem("tokenProfile")?
+            <li className="menu-category">
+              <Link to="/list" className="menu-title">
+                {t("Client list")}
+              </Link>
+            </li>:""}
             <li className="menu-category">
               <Link to="/login" className="menu-title">
                 {t("Login")}

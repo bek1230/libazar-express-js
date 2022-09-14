@@ -15,6 +15,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import Login from "./pages/Profil/Login";
 import Fowarits from "./pages/Products/Fowarits";
+import List from "./components/Client/List";
 
 function App() {
   return (
@@ -26,6 +27,8 @@ function App() {
               <Route path="/opencard" element={<OpenCard />} />
               <Route path="/products" element={<Products />} />
               <Route path="/about" element={<About />} />
+              <Route path="/list" element={<List />} />
+
               <Route path="/profile" element={<Profile />} />
               <Route path="/login" element={<Login />} />
               <Route path="/fowarids" element={<Fowarits />} />

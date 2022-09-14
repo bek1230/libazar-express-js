@@ -22,6 +22,8 @@ function MobileMenu(props) {
   const items = [
     getItem(t("Home"), "Home", <DashboardOutlined />),
     getItem(t("About"), "About", <InfoCircleOutlined />),
+    getItem(t("Client list"), "Client list", <InfoCircleOutlined />),
+
     getItem(t("Login"), "Login", <LoginOutlined />),
 
     getItem(
@@ -41,6 +43,9 @@ function MobileMenu(props) {
     }
     if (e.key == "About") {
       navigate("/about");
+    }
+    if (e.key == "Client list") {
+      navigate("/list");
     }
     if (e.key == "Login") {
       navigate("/login");
