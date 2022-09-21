@@ -65,7 +65,7 @@ function OpenCard({ t }) {
     setVisible(false);
   };
   const handleSave = () => {
-    let userId = searchParams.get("id").slice(-36);
+    let userId = searchParams.get("id").slice(-6);
     const fullname = document.getElementById("fullname").value;
     const phone = document.getElementById("phone").value;
     const region=document.getElementById("region").value;
