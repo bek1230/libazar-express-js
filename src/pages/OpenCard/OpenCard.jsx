@@ -20,7 +20,7 @@ function OpenCard({ t }) {
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [modalText, setModalText] = useState("Content of the modal");
   // let id = searchParams.get("id");
-  let id = searchParams.get("id").slice(0, 36);
+  let id = searchParams.get("id").slice(0, 6);
 
   const [data, setData] = useState();
   const [resid, setresId] = useState();
