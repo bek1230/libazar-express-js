@@ -107,7 +107,7 @@ function Sidebar({ t }) {
                 <div className="showcase" key={i}>
                   <a href="#" className="showcase-img-box">
                     <img
-                      src={res?.imageUrls[res.imageUrls.length - 1]}
+                      src={res?.imageUrls[0]}
                       alt="baby fabric shoes"
                       width="75"
                       height="75"

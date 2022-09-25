@@ -149,11 +149,7 @@ function ProductMin(props) {
                     >
                       <div className="showcase-banner">
                         <img
-                          src={
-                            res.imageUrls
-                              ? res.imageUrls[res.imageUrls.length - 1]
-                              : ""
-                          }
+                          src={res.imageUrls ? res.imageUrls[0] : ""}
                           alt="Mens Winter Leathers Jackets"
                           width="300"
                           className="product-img default"
@@ -162,7 +158,7 @@ function ProductMin(props) {
                           src={
                             res.imageUrls[1]
                               ? res.imageUrls[1]
-                              : res.imageUrls[res.imageUrls.length - 1]
+                              : res.imageUrls[0]
                           }
                           alt="Mens Winter Leathers Jackets"
                           width="300"
@@ -240,11 +236,7 @@ function ProductMin(props) {
                     >
                       <div className="showcase-banner">
                         <img
-                          src={
-                            res.imageUrls
-                              ? res.imageUrls[res.imageUrls.length - 1]
-                              : ""
-                          }
+                          src={res.imageUrls ? res.imageUrls[0] : ""}
                           alt="Mens Winter Leathers Jackets"
                           width="300"
                           className="product-img default"
@@ -253,7 +245,7 @@ function ProductMin(props) {
                           src={
                             res.imageUrls[1]
                               ? res.imageUrls[1]
-                              : res.imageUrls[res.imageUrls.length - 1]
+                              : res.imageUrls[0]
                           }
                           alt="Mens Winter Leathers Jackets"
                           width="300"
