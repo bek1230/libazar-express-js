@@ -126,19 +126,29 @@ function Fowarits(props) {
             <div className="product-grid">
               {product?.map((res, i) =>
                 res?.isFavourite ? (
-                  <div className="showcase" key={i}   onClick={() =>
+                  <div
+                    className="showcase"
+                    key={i}
+                    onClick={() =>
                       (window.location.href = `/openCard?id=${res.id}`)
-                    }>
+                    }
+                  >
                     <div className="showcase-banner">
                       <img
-                        src={res.imageUrls ? res.imageUrls[0] : ""}
+                        src={
+                          res.imageUrls
+                            ? res.imageUrls[res.imageUrls.length - 1]
+                            : ""
+                        }
                         alt="Mens Winter Leathers Jackets"
                         width="300"
                         className="product-img default"
                       />
                       <img
                         src={
-                          res.imageUrls[1] ? res.imageUrls[1] : res.imageUrls[0]
+                          res.imageUrls[1]
+                            ? res.imageUrls[1]
+                            : res.imageUrls[res.imageUrls.length - 1]
                         }
                         alt="Mens Winter Leathers Jackets"
                         width="300"

@@ -10,13 +10,13 @@ function Sidebar({ t }) {
   const active = useSelector((state) => state.openCategory);
   const [visible, setVisible] = useState(false);
   const [category, setCategory] = useState();
-  const[best,setBest]=useState()
+  const [best, setBest] = useState();
   useEffect(() => {
     fetch(url.url + "category/get")
       .then((res) => res.json())
       .then((data) => setCategory(data.data))
       .catch((error) => console.log(error));
-      fetch(url.url + "product/best-seller")
+    fetch(url.url + "product/best-seller")
       .then((res) => res.json())
       .then((data) => setBest(data.data))
       .catch((error) => console.log(error));
@@ -103,40 +103,40 @@ function Sidebar({ t }) {
 
           <div className="showcase-wrapper">
             <div className="showcase-container">
-            {best?.map((res,i)=>(
-              <div className="showcase" key={i}>
-                <a href="#" className="showcase-img-box">
-                  <img
-                    src={res?.imageUrls[0]}
-                    alt="baby fabric shoes"
-                    width="75"
-                    height="75"
-                    className="showcase-img"
-                  />
-                </a>
-
-                <div className="showcase-content">
-                  <a href="#">
-                    <h4 className="showcase-title">{res?.name}</h4>
+              {best?.map((res, i) => (
+                <div className="showcase" key={i}>
+                  <a href="#" className="showcase-img-box">
+                    <img
+                      src={res?.imageUrls[res.imageUrls.length - 1]}
+                      alt="baby fabric shoes"
+                      width="75"
+                      height="75"
+                      className="showcase-img"
+                    />
                   </a>
 
-                  <div className="showcase-rating">
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                  </div>
+                  <div className="showcase-content">
+                    <a href="#">
+                      <h4 className="showcase-title">{res?.name}</h4>
+                    </a>
 
-                  <div className="price-box">
-                    {/* <del>$5.00</del> */}
-                    <p className="price">{res?.price} {res?.currency}</p>
+                    <div className="showcase-rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+
+                    <div className="price-box">
+                      {/* <del>$5.00</del> */}
+                      <p className="price">
+                        {res?.price} {res?.currency}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
               ))}
-
-
             </div>
           </div>
         </div>

@@ -117,7 +117,9 @@ function ProductMin(props) {
           }}
         >
           <div>{t("Products")}</div>
-          <Link className="ant-menu-title-content" to="/products">{t("Barchasi")}</Link>
+          <Link className="ant-menu-title-content" to="/products">
+            {t("Barchasi")}
+          </Link>
         </div>
         <div>
           {load ? (
@@ -138,12 +140,20 @@ function ProductMin(props) {
             <div className="product-grid">
               {filter
                 ? filter?.map((res, i) => (
-                    <div className="showcase" key={i}   onClick={() =>
-                      (window.location.href = `/openCard?id=${res.id}`)
-                    }>
+                    <div
+                      className="showcase"
+                      key={i}
+                      onClick={() =>
+                        (window.location.href = `/openCard?id=${res.id}`)
+                      }
+                    >
                       <div className="showcase-banner">
                         <img
-                          src={res.imageUrls ? res.imageUrls[0] : ""}
+                          src={
+                            res.imageUrls
+                              ? res.imageUrls[res.imageUrls.length - 1]
+                              : ""
+                          }
                           alt="Mens Winter Leathers Jackets"
                           width="300"
                           className="product-img default"
@@ -152,7 +162,7 @@ function ProductMin(props) {
                           src={
                             res.imageUrls[1]
                               ? res.imageUrls[1]
-                              : res.imageUrls[0]
+                              : res.imageUrls[res.imageUrls.length - 1]
                           }
                           alt="Mens Winter Leathers Jackets"
                           width="300"
@@ -221,12 +231,20 @@ function ProductMin(props) {
                     </div>
                   ))
                 : product?.map((res, i) => (
-                    <div className="showcase" key={i}   onClick={() =>
-                      (window.location.href = `/openCard?id=${res.id}`)
-                    }>
+                    <div
+                      className="showcase"
+                      key={i}
+                      onClick={() =>
+                        (window.location.href = `/openCard?id=${res.id}`)
+                      }
+                    >
                       <div className="showcase-banner">
                         <img
-                          src={res.imageUrls ? res.imageUrls[0] : ""}
+                          src={
+                            res.imageUrls
+                              ? res.imageUrls[res.imageUrls.length - 1]
+                              : ""
+                          }
                           alt="Mens Winter Leathers Jackets"
                           width="300"
                           className="product-img default"
@@ -235,7 +253,7 @@ function ProductMin(props) {
                           src={
                             res.imageUrls[1]
                               ? res.imageUrls[1]
-                              : res.imageUrls[0]
+                              : res.imageUrls[res.imageUrls.length - 1]
                           }
                           alt="Mens Winter Leathers Jackets"
                           width="300"
@@ -264,7 +282,6 @@ function ProductMin(props) {
                           <button
                             className="btn-action"
                             onClick={() =>
-
                               (window.location.href = `/openCard?id=${res.id}`)
                             }
                           >
