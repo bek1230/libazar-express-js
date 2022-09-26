@@ -14,7 +14,7 @@ import url from "../../url.json";
 import { withTranslation } from "react-i18next";
 import { filterReducer } from "../../Redux/Reducers/filter";
 import { LogoutOutlined } from "@ant-design/icons";
-
+import Logo from "../../assets/icons/libazar.svg";
 function Header({ t }) {
   const [open, setOpen] = useState(false);
   const [visible, setVisible] = useState(false);
@@ -132,15 +132,10 @@ function Header({ t }) {
               <Link
                 to="/"
                 className="header-logo logos menu-title"
-                style={{ marginRight: 5 }}
+                style={{ marginRight: 5,alignItems: "center" }}
               >
-                {/* <img
-                  src="../../assets/images/logo/logo.png"
-                  alt="Anon's logo"
-                  width="80"
-                  height="40"
-                /> */}
-                <h3 className="menu-title" style={{color:"#000",fontWeight:600}}>LIBAZAR</h3>
+                <img className="menu-title" src={Logo} alt="Anon's logo" />
+                {/* <h3 className="menu-title" style={{color:"#000",fontWeight:600}}>LIBAZAR</h3> */}
               </Link>
 
               <div className="header-search-container search-inp">
@@ -242,12 +237,15 @@ function Header({ t }) {
                 {t("About")}
               </Link>
             </li>
-            {localStorage.getItem("tokenProfile")?
-            <li className="menu-category">
-              <Link to="/list" className="menu-title">
-                {t("Client list")}
-              </Link>
-            </li>:""}
+            {localStorage.getItem("tokenProfile") ? (
+              <li className="menu-category">
+                <Link to="/list" className="menu-title">
+                  {t("Client list")}
+                </Link>
+              </li>
+            ) : (
+              ""
+            )}
             <li className="menu-category">
               <Link to="/login" className="menu-title">
                 {t("Login")}

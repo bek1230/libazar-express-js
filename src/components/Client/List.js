@@ -144,9 +144,7 @@ function List({ t }) {
             borderRadius: 12,
           }}
         >
-          <Spin tip={t("Loading...")}>
             <Empty description={t("No data")} />
-          </Spin>
         </div>
       )}
     </>
