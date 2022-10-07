@@ -402,4 +402,16 @@ tr {
     font-size: 10px !important;
     min-width: auto;
   }
+  .tdd:first-child {
+    min-width: 40px !important;
+  }
+  .thh:first-child {
+    min-width: 40px !important;
+}
+.thh{
+  min-width: 140px !important;
+}
+.tdd{
+  min-width: 140px !important;
+}
 }
