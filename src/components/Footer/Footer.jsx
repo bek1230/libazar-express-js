@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { withTranslation } from "react-i18next";
-import {Link,useNavigate} from 'react-router-dom'
+import { Link, useNavigate } from "react-router-dom";
 import url from "../../url.json";
 function Footer({ t }) {
   const [category, setCategory] = useState();
   const [product, setproduct] = useState();
-const navigate=useNavigate()
+  const navigate = useNavigate();
   useEffect(() => {
     fetch(url.url + "product/get")
       .then((res) => res.json())
       .then((data) => {
-        const dat=data.data.slice(0,4)
+        const dat = data.data.slice(0, 4);
         setproduct(dat);
       })
       .catch((error) => console.log(error));
@@ -28,13 +28,14 @@ const navigate=useNavigate()
               <h2 className="nav-title">{t("Popular Categories")}</h2>
             </li>
             {category?.map((res, i) => (
-              <li className="footer-nav-item" key={i} onClick={()=>
-              window.location.href=`/products?id=${res.id}`
-              }>
-                <div
-style={{cursor: 'pointer'}}
-                  className="footer-nav-link"
-                >
+              <li
+                className="footer-nav-item"
+                key={i}
+                onClick={() =>
+                  (window.location.href = `/products?id=${res.id}`)
+                }
+              >
+                <div style={{ cursor: "pointer" }} className="footer-nav-link">
                   {res?.name}
                 </div>
               </li>
@@ -45,17 +46,19 @@ style={{cursor: 'pointer'}}
             <li className="footer-nav-item">
               <h2 className="nav-title">{t("Products")}</h2>
             </li>
-{product?.map((res) =>(
-            <li className="footer-nav-item" key={res.id} onClick={()=>
-
-            window.location.href=`/openCard?id=${res.id}`}
-            >
-              <div style={{cursor: 'pointer'}}  className="footer-nav-link">
-                {res?.name}
-              </div>
-            </li>
+            {product?.map((res) => (
+              <li
+                className="footer-nav-item"
+                key={res.id}
+                onClick={() =>
+                  (window.location.href = `/openCard?id=${res.id}`)
+                }
+              >
+                <div style={{ cursor: "pointer" }} className="footer-nav-link">
+                  {res?.name}
+                </div>
+              </li>
             ))}
-
           </ul>
 
           <ul className="footer-nav-list">
@@ -68,9 +71,7 @@ style={{cursor: 'pointer'}}
                 <ion-icon name="location-outline"></ion-icon>
               </div>
 
-              <div className="footer-nav-link">
-                Afrosiyob ko'chasi 12-uy
-              </div>
+              <div className="footer-nav-link">Afrosiyob ko'chasi 12-uy</div>
             </li>
 
             <li className="footer-nav-item flex">
@@ -89,7 +90,7 @@ style={{cursor: 'pointer'}}
               </div>
 
               <a href="mailto:example@gmail.com" className="footer-nav-link">
-               libazar@inbox.ru
+                libazar@inbox.ru
               </a>
             </li>
           </ul>

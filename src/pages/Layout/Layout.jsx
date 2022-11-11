@@ -8,12 +8,12 @@ export default function Layout() {
   return (
     <div className="page-container">
       <Intro />
-      <div className="site-header">
+      <header className="site-header">
         <Header />
-      </div>
-      <div className="page-main">
+      </header>
+      <main className="page-main">
         <Outlet />
-      </div>
+      </main>
       <Footer />
     </div>
   );

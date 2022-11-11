@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { fowaridReducer } from "../../Redux/Reducers/fowarid";
+import Aos from "../Aos";
 function ProductMin(props) {
   const dispatch = useDispatch();
   const { t } = useTranslation();
@@ -116,7 +117,7 @@ function ProductMin(props) {
             paddingBottom: 0,
           }}
         >
-          <div>{t("Products")}</div>
+          <h3 className="showcase-heading">{t("Products")}</h3>
           <Link className="ant-menu-title-content" to="/products">
             {t("Barchasi")}
           </Link>
@@ -227,90 +228,91 @@ function ProductMin(props) {
                     </div>
                   ))
                 : product?.map((res, i) => (
-                    <div
-                      className="showcase"
-                      key={i}
-                      onClick={() =>
-                        (window.location.href = `/openCard?id=${res.id}`)
-                      }
-                    >
-                      <div className="showcase-banner">
-                        <img
-                          src={res.imageUrls ? res.imageUrls[0] : ""}
-                          alt="Mens Winter Leathers Jackets"
-                          width="300"
-                          className="product-img default"
-                        />
-                        <img
-                          src={
-                            res.imageUrls[1]
-                              ? res.imageUrls[1]
-                              : res.imageUrls[0]
-                          }
-                          alt="Mens Winter Leathers Jackets"
-                          width="300"
-                          className="product-img hover"
-                        />
-                        {res?.statusProduct == "OFF" ? (
-                          <p className="showcase-badge angle pink">
-                            {t("sale")}
-                          </p>
-                        ) : (
-                          ""
-                        )}
-
-                        <div className="showcase-actions">
-                          <button
-                            className="btn-action"
-                            onClick={() => isfofarit(res.id, res.isFavourite)}
-                          >
-                            {res?.isFavourite ? (
-                              <HeartFilled />
-                            ) : (
-                              <HeartOutlined />
-                            )}{" "}
-                          </button>
-
-                          <button
-                            className="btn-action"
-                            onClick={() =>
-                              (window.location.href = `/openCard?id=${res.id}`)
+                    <Aos key={i}>
+                      <div
+                        className="showcase"
+                        onClick={() =>
+                          (window.location.href = `/openCard?id=${res.id}`)
+                        }
+                      >
+                        <div className="showcase-banner">
+                          <img
+                            src={res.imageUrls ? res.imageUrls[0] : ""}
+                            alt="Mens Winter Leathers Jackets"
+                            width="300"
+                            className="product-img default"
+                          />
+                          <img
+                            src={
+                              res.imageUrls[1]
+                                ? res.imageUrls[1]
+                                : res.imageUrls[0]
                             }
-                          >
-                            <ion-icon name="eye-outline"></ion-icon>
-                          </button>
-                        </div>
-                      </div>
-
-                      <div className="showcase-content">
-                        <a className="showcase-category">{res?.name}</a>
-
-                        <a>
-                          <h3
-                            className="showcase-title"
-                            style={{
-                              textOverflow: "ellipsis",
-                              overflow: "hidden",
-                            }}
-                          >
-                            {res?.description}
-                          </h3>
-                        </a>
-
-                        <div className="price-box">
-                          <p className="price">
-                            {res?.price} {res?.currency}
-                          </p>
-                          {res?.offPrice ? (
-                            <del>
-                              {res?.offPrice} {res?.currency}
-                            </del>
+                            alt="Mens Winter Leathers Jackets"
+                            width="300"
+                            className="product-img hover"
+                          />
+                          {res?.statusProduct == "OFF" ? (
+                            <p className="showcase-badge angle pink">
+                              {t("sale")}
+                            </p>
                           ) : (
                             ""
                           )}
+
+                          <div className="showcase-actions">
+                            <button
+                              className="btn-action"
+                              onClick={() => isfofarit(res.id, res.isFavourite)}
+                            >
+                              {res?.isFavourite ? (
+                                <HeartFilled />
+                              ) : (
+                                <HeartOutlined />
+                              )}{" "}
+                            </button>
+
+                            <button
+                              className="btn-action"
+                              onClick={() =>
+                                (window.location.href = `/openCard?id=${res.id}`)
+                              }
+                            >
+                              <ion-icon name="eye-outline"></ion-icon>
+                            </button>
+                          </div>
+                        </div>
+
+                        <div className="showcase-content">
+                          <a className="showcase-category">{res?.name}</a>
+
+                          <a>
+                            <h3
+                              className="showcase-title"
+                              style={{
+                                textOverflow: "ellipsis",
+                                overflow: "hidden",
+                              }}
+                            >
+                              {res?.description}
+                            </h3>
+                          </a>
+
+                          <div className="price-box">
+                            <p className="price">
+                              {res?.price} {res?.currency}
+                            </p>
+                            {res?.offPrice ? (
+                              <del>
+                                {res?.offPrice} {res?.currency}
+                              </del>
+                            ) : (
+                              ""
+                            )}
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    </Aos>
                   ))}
             </div>
           )}

@@ -68,13 +68,13 @@ function OpenCard({ t }) {
     let userId = searchParams.get("id").slice(-6);
     const fullname = document.getElementById("fullname").value;
     const phone = document.getElementById("phone").value;
-    const region=document.getElementById("region").value;
+    const region = document.getElementById("region").value;
     const data = {
       userId: userId ? userId : resid,
       productId: id,
       phoneNumber: phone,
       sellerName: fullname,
-      region:region
+      region: region,
     };
     if (fullname != "" && phone != "") {
       axios({
@@ -131,24 +131,35 @@ function OpenCard({ t }) {
       <div className="open-wrapper">
         <div className="open-wrap-slid">
           <div className="img_block">
-          {data?.imageUrls[0]?   <Carousel autoplay>
-            {data?.imageUrls.map((res, i) => (
-              <div className="carousel-div" key={i}>
-                <img
-                  src={res}
-                  alt="Pure Garment Dyed Cotton Shirt"
-                  className="product-img default"
-                  style={{
-                    width: "100%",
-                    height: 450,
-                    borderRadius: 10,
-                    objectFit: "contain",
-                  }}
-                  width="100%"
-                />
+            {data?.imageUrls[0] ? (
+              <Carousel autoplay>
+                {data?.imageUrls.map((res, i) => (
+                  <div className="carousel-div" key={i}>
+                    <img
+                      src={res}
+                      alt="Pure Garment Dyed Cotton Shirt"
+                      style={{
+                        width: "100%",
+                        height: 400,
+                        borderRadius: 10,
+                        objectFit: "cover",
+                      }}
+                    />
+                  </div>
+                ))}
+              </Carousel>
+            ) : (
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginTop: 20,
+                }}
+              >
+                <Spin />{" "}
               </div>
-            ))}
-          </Carousel>: <div style={{display:'flex',alignItems:'center',justifyContent: 'center',marginTop:20}}><Spin/> </div>}
+            )}
             {data?.urlVideo ? (
               <div
                 className="play"
@@ -159,14 +170,12 @@ function OpenCard({ t }) {
               ""
             )}
           </div>
-
-
         </div>
         <div className="open-wrap-form">
           <div className="open-disc">
             <div className="prod-title">
               <h1 className="prod-name">{data?.name}</h1>
-              <h2 className="prod-price">
+              <h2 className="prod-price" >
                 {data?.price} {data?.currency}
               </h2>
             </div>

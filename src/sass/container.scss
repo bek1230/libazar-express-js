@@ -1,5 +1,31 @@
+@import "./variables.scss";
+
 .containerr {
   width: 100%;
   padding: 0 20px;
   margin: 0 auto;
+}
+.product-img {
+  object-fit: cover !important;
+  object-position: center !important;
+}
+.showcase-heading {
+  color: hsl(0, 0%, 47%);
+  font-size: var(--fs-5);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-weight: 600;
+}
+.prod-price {
+  color: hsl(0, 0%, 47%);
+}
+.logos {
+  width: 15%;
+  margin-right: 15px;
+}
+.search-inp {
+  width: 50%;
+}
+.header-search-container{
+  max-width: 400px;
 }
